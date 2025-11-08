@@ -209,15 +209,30 @@ fun Formulir(
                         shape = RoundedCornerShape(12.dp)
                     )
                 }
-                Spacer(modifier = Modifier.height(12.dp))
-                Row {
+                Spacer(modifier = Modifier.height(208.dp))
+                Row(modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween) {
+                    ElevatedButton(
+                        onClick = onResetButtonClick,
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = colorResource(R.color.orange),
+                            contentColor = colorResource(R.color.white)
+                        ),
+                        modifier = Modifier.width(140.dp)
+                    ) {
+                        Text(text = "Batal",
+                            fontFamily = PlusJakartaSans,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 16.sp
+                        )
+                    }
                     ElevatedButton(
                         onClick = onSubmitButtonClick,
                         colors = ButtonDefaults.buttonColors(
                             containerColor = colorResource(R.color.orange),
                             contentColor = colorResource(R.color.white)
                         ),
-                        modifier = Modifier.width(240.dp)
+                        modifier = Modifier.width(140.dp)
                     ) {
                         Text(text = "Simpan",
                             fontFamily = PlusJakartaSans,
