@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -46,8 +47,8 @@ fun LandingPage(
         color = colorResource(id = R.color.blue)) {
         Column(modifier = Modifier
             .fillMaxSize()
-            .padding(top = 120.dp),
-            verticalArrangement = Arrangement.Top,
+            .padding(top = 40.dp, bottom = 32.dp),
+            verticalArrangement = Arrangement.SpaceAround,
             horizontalAlignment = Alignment.CenterHorizontally) {
             Text("Selamat Datang",
                 color = colorResource(id = R.color.white),
@@ -55,7 +56,7 @@ fun LandingPage(
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold
             )
-            Spacer(modifier = Modifier.height(80.dp))
+            //Spacer(modifier = Modifier.height(80.dp))
             val logo = painterResource(id = R.drawable.listdata)
             Image(painter = logo,
                 contentScale = ContentScale.Fit,
@@ -63,31 +64,38 @@ fun LandingPage(
                 modifier = Modifier
                     .height(48.dp)
             )
-            Spacer(modifier = Modifier.height(80.dp))
-            Text("Arya Bagas Saputra",
-                color = colorResource(id = R.color.white),
-                fontFamily = PlusJakartaSans,
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Normal
-            )
-            Text("20230140029",
-                color = colorResource(id = R.color.white),
-                fontFamily = PlusJakartaSans,
-                fontSize = 12.sp,
-                fontWeight = FontWeight.Light
-            )
-            ElevatedButton(
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = colorResource(id = R.color.orange),
-                    contentColor = colorResource(id = R.color.white)
-                ),
-                modifier = Modifier.width(240.dp),
-                onClick = onBackButtonClick
+            //Spacer(modifier = Modifier.height(80.dp))
+            Column(modifier = Modifier
+                .fillMaxWidth(),
+                verticalArrangement = Arrangement.SpaceAround,
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(text = "Masuk",
-                    fontSize = 20.sp,
+                Text("Arya Bagas Saputra",
+                    color = colorResource(id = R.color.white),
                     fontFamily = PlusJakartaSans,
-                    fontWeight = FontWeight.Bold)
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Normal
+                )
+                Text("20230140029",
+                    color = colorResource(id = R.color.white),
+                    fontFamily = PlusJakartaSans,
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.Light
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                ElevatedButton(
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = colorResource(id = R.color.orange),
+                        contentColor = colorResource(id = R.color.white)
+                    ),
+                    modifier = Modifier.width(240.dp),
+                    onClick = onBackButtonClick
+                ) {
+                    Text(text = "Masuk",
+                        fontSize = 20.sp,
+                        fontFamily = PlusJakartaSans,
+                        fontWeight = FontWeight.Bold)
+                }
             }
         }
     }
