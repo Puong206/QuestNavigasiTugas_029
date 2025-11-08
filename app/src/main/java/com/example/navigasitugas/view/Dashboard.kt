@@ -52,6 +52,24 @@ fun Dashboard() {
             gender = "Laki - Laki",
             status = "Belum Menikah",
             alamat = "Bengkulu"
+        ),
+        CardData(
+            nama = "Sascha Danu",
+            gender = "Laki - Laki",
+            status = "Belum Menikah",
+            alamat = "Sukoharjo"
+        ),
+        CardData(
+            nama = "Nabil Nasruddin",
+            gender = "Laki - Laki",
+            status = "Belum Menikah",
+            alamat = "Sidoarjo"
+        ),
+        CardData(
+            nama = "M. Refky Syahrin",
+            gender = "Laki - Laki",
+            status = "Belum Menikah",
+            alamat = "Tasikmalaya"
         )
     )
     Scaffold(
@@ -76,11 +94,11 @@ fun Dashboard() {
                     containerColor = colorResource(R.color.blue)
                 )
             )
-        }) {
+        })
+    {
         Frame->
         LazyColumn(modifier = Modifier
-            .padding(Frame)
-            .fillMaxWidth(),
+            .padding(Frame),
             horizontalAlignment = Alignment.CenterHorizontally) {
             items(items) { item ->
                 ElevatedCard(
@@ -88,25 +106,71 @@ fun Dashboard() {
                         defaultElevation = 8.dp
                     ),
                     modifier = Modifier
-                        .size(width = 240.dp, height = 100.dp)
-                        .padding(vertical = 8.dp),
+                        //.size(width = 240.dp, height = 100.dp)
+                        .padding(vertical = 4.dp),
                     colors = CardDefaults.cardColors(
                         colorResource(R.color.white)
                     )
                 ){
                     Row(modifier = Modifier
-                        .fillMaxWidth())
+                        .padding(top = 8.dp, start = 16.dp, end = 60.dp, bottom = 8.dp)
+                        .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween)
                     {
-                        Column(
-                            modifier = Modifier.padding(top = 4.dp, start = 8.dp),
-
-                        ) {
+                        Column {
                             Text(text = "NAMA LENGKAP",
                                 fontSize = 16.sp,
                                 fontFamily = PlusJakartaSans,
                                 fontWeight = FontWeight.Bold,
                                 color = colorResource(R.color.blue))
                             Text("${item.nama}",
+                                fontSize = 16.sp,
+                                fontFamily = PlusJakartaSans,
+                                fontWeight = FontWeight.Normal,
+                                color = colorResource(R.color.blue))
+                        }
+                        Column {
+                            Text(text = "JENIS KELAMIN",
+                                fontSize = 16.sp,
+                                fontFamily = PlusJakartaSans,
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(R.color.blue))
+                            Text("${item.gender}",
+                                fontSize = 16.sp,
+                                fontFamily = PlusJakartaSans,
+                                fontWeight = FontWeight.Normal,
+                                color = colorResource(R.color.blue))
+                        }
+                    }
+                    Row(modifier = Modifier
+                        .padding(top = 8.dp, start = 16.dp, end = 60.dp, bottom = 8.dp)
+                        .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween)
+                    {
+                        Column {
+                            Text(text = "STATUS PERKAWINAN",
+                                fontSize = 16.sp,
+                                fontFamily = PlusJakartaSans,
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(R.color.blue),
+                                modifier = Modifier.width(120.dp))
+                            Text("${item.status}",
+                                fontSize = 16.sp,
+                                fontFamily = PlusJakartaSans,
+                                fontWeight = FontWeight.Normal,
+                                color = colorResource(R.color.blue))
+                        }
+                        Column(
+                            modifier = Modifier.padding(top = 4.dp, start = 8.dp),
+
+                            ) {
+                            Text(text = "ALAMAT",
+                                fontSize = 16.sp,
+                                fontFamily = PlusJakartaSans,
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(R.color.blue),
+                                modifier = Modifier.width(120.dp))
+                            Text("${item.alamat}",
                                 fontSize = 16.sp,
                                 fontFamily = PlusJakartaSans,
                                 fontWeight = FontWeight.Normal,
