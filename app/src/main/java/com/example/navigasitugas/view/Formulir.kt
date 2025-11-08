@@ -3,15 +3,20 @@ package com.example.navigasitugas.view
 import androidx.compose.foundation.layout.Arrangement
 import com.example.navigasitugas.R
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -78,6 +83,44 @@ fun Formulir() {
                         shape = RoundedCornerShape(12.dp),
                         modifier = Modifier.fillMaxWidth()
                     )
+                }
+                Spacer(modifier = Modifier.height(12.dp))
+                Column {
+                    Text(text = "Jenis Kelamin",
+                        fontFamily = PlusJakartaSans,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        color = colorResource(R.color.blue)
+                    )
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Row {
+                        jenis.forEach { item ->
+                            Row(modifier = Modifier.selectable(
+                                selected = txtGender == item,
+                                onClick = { txtGender = item }
+                            ), verticalAlignment = Alignment.CenterVertically) {
+                                RadioButton(
+                                    selected = txtGender == item,
+                                    onClick = { txtGender = item },
+                                    colors = RadioButtonDefaults.colors(
+                                        selectedColor = colorResource(R.color.blue),
+                                        unselectedColor = colorResource(R.color.blue)
+                                    ),
+                                    modifier = Modifier
+                                        .width(12.dp)
+                                        .height(12.dp)
+                                        .padding(start = 8.dp)
+                                )
+                                Spacer(modifier = Modifier.width(12.dp))
+                                Text(item,
+                                    fontFamily = PlusJakartaSans,
+                                    fontWeight = FontWeight.Medium,
+                                    fontSize = 14.sp,
+                                    color = colorResource(R.color.blue))
+                                Spacer(modifier = Modifier.width(20.dp))
+                            }
+                        }
+                    }
                 }
 
             }
