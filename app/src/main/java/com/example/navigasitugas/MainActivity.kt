@@ -11,8 +11,10 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.navigasitugas.ui.theme.NavigasiTugasTheme
+import com.example.navigasitugas.view.Dashboard
 import com.example.navigasitugas.view.LandingPage
 
 class MainActivity : ComponentActivity() {
@@ -22,27 +24,13 @@ class MainActivity : ComponentActivity() {
         setContent {
             NavigasiTugasTheme {
                 Surface(
-                    modifier = Modifier.fillMaxSize()
+                    modifier = Modifier.fillMaxSize(),
+                    color = colorResource(id = R.color.blue)
                 ) {
-                    LandingPage(onBackButtonClick = {})
+                    //LandingPage(onBackButtonClick = {})
+                    Dashboard()
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    NavigasiTugasTheme {
-        Greeting("Android")
     }
 }
