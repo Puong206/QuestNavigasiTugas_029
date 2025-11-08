@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -35,10 +36,6 @@ fun Dashboard() {
                         .fillMaxWidth(),
                         horizontalArrangement = Arrangement.Center)
                     {
-//                        Image(painter = painterResource(id = R.drawable.listdata),
-//                            contentDescription = null,
-//                            modifier = Modifier.height(16.dp))
-//                        Spacer(modifier = Modifier.width(12.dp))
                         Text("List Daftar Peserta",
                             color = colorResource(R.color.orange),
                             fontFamily = PlusJakartaSans,
@@ -54,7 +51,8 @@ fun Dashboard() {
             )
         }) {
         Frame->
-        Column(modifier = Modifier.padding(Frame)) {
+        LazyColumn(modifier = Modifier
+            .padding(Frame)) {
 
         }
     }
