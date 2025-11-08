@@ -57,7 +57,7 @@ fun Dashboard(
         CardData(
             nama = "M. Zaky Malika",
             gender = "Laki - Laki",
-            status = "Belum Menikah",
+            status = "Menikah",
             alamat = "Bengkulu"
         ),
         CardData(
@@ -75,7 +75,7 @@ fun Dashboard(
         CardData(
             nama = "M. Refky Syahrin",
             gender = "Laki - Laki",
-            status = "Belum Menikah",
+            status = "Menikah",
             alamat = "Tasikmalaya"
         )
     )
@@ -109,7 +109,7 @@ fun Dashboard(
             ) {
                     Row(modifier = Modifier
                         .fillMaxWidth(),
-                        horizontalArrangement = Arrangement.Center,
+                        horizontalArrangement = Arrangement.SpaceEvenly,
                         verticalAlignment = Alignment.CenterVertically
                     )
                     {
@@ -118,8 +118,8 @@ fun Dashboard(
                                 containerColor = colorResource(id = R.color.orange),
                                 contentColor = colorResource(id = R.color.white)
                             ),
-//                            modifier = Modifier
-//                                .width(240.dp),
+                            modifier = Modifier
+                                .width(160.dp),
                             //.hoverable(interactionSource = hover),
                             onClick = onBackButtonClick
                         ) {
@@ -133,8 +133,8 @@ fun Dashboard(
                                 containerColor = colorResource(id = R.color.orange),
                                 contentColor = colorResource(id = R.color.white)
                             ),
-//                            modifier = Modifier
-//                                .width(240.dp),
+                            modifier = Modifier
+                                .width(160.dp),
                             //.hoverable(interactionSource = hover),
                             onClick = onBackButtonClick
                         ) {
@@ -159,13 +159,13 @@ fun Dashboard(
                     ),
                     modifier = Modifier
                         //.size(width = 240.dp, height = 100.dp)
-                        .padding(vertical = 4.dp),
+                        .padding(vertical = 8.dp),
                     colors = CardDefaults.cardColors(
                         colorResource(R.color.white)
                     )
                 ){
                     Row(modifier = Modifier
-                        .padding(top = 8.dp, start = 16.dp, end = 20.dp, bottom = 2.dp)
+                        .padding(top = 12.dp, start = 16.dp, end = 20.dp)
                         .fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween)
                     {
@@ -194,8 +194,9 @@ fun Dashboard(
                                 color = colorResource(R.color.blue))
                         }
                     }
+                    Spacer(modifier = Modifier.height(12.dp))
                     Row(modifier = Modifier
-                        .padding(top = 2.dp, start = 16.dp, end = 20.dp, bottom = 8.dp)
+                        .padding(start = 16.dp, end = 20.dp, bottom = 12.dp)
                         .fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween)
                     {
