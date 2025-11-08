@@ -1,12 +1,22 @@
 package com.example.navigasitugas.view
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import com.example.navigasitugas.R
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 val PlusJakartaSans = FontFamily(
     Font(R.font.plusjakartasans_extralight, FontWeight.ExtraLight),
@@ -18,11 +28,22 @@ val PlusJakartaSans = FontFamily(
     Font(R.font.plusjakartasans_extrabold, FontWeight.ExtraBold)
 )
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LandingPage() {
-    Column {
-
+    Surface(modifier = Modifier.fillMaxSize(),
+        color = colorResource(id = R.color.blue)) {
+        Column(modifier = Modifier
+            .fillMaxSize()
+            .padding(top = 80.dp),
+            verticalArrangement = Arrangement.SpaceBetween,
+            horizontalAlignment = Alignment.CenterHorizontally) {
+            Text("Selamat Datang",
+                color = colorResource(id = R.color.white),
+                fontFamily = PlusJakartaSans,
+                fontSize = 32.sp,
+                fontWeight = FontWeight.Bold
+            )
+        }
     }
 }
