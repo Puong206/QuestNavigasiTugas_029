@@ -18,7 +18,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -40,7 +44,9 @@ data class CardData(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Dashboard() {
+fun Dashboard(
+    onBackButtonClick: () -> Unit
+) {
     val items = listOf(
         CardData(
             nama = "Arya Bagas Saputra",
@@ -87,7 +93,8 @@ fun Dashboard() {
                             fontFamily = PlusJakartaSans,
                             fontWeight = FontWeight.Bold,
                             fontSize = 24.sp,
-                            modifier = Modifier.padding(top = 40.dp, bottom = 20.dp)
+                            modifier = Modifier
+                                .padding(top = 40.dp, bottom = 20.dp)
                         )
                     }
                 },
@@ -95,6 +102,49 @@ fun Dashboard() {
                     containerColor = colorResource(R.color.blue)
                 )
             )
+        },
+        bottomBar = {
+            BottomAppBar(
+                containerColor = colorResource(R.color.blue)
+            ) {
+                    Row(modifier = Modifier
+                        .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center,
+                        verticalAlignment = Alignment.CenterVertically
+                    )
+                    {
+                        ElevatedButton(
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = colorResource(id = R.color.orange),
+                                contentColor = colorResource(id = R.color.white)
+                            ),
+//                            modifier = Modifier
+//                                .width(240.dp),
+                            //.hoverable(interactionSource = hover),
+                            onClick = onBackButtonClick
+                        ) {
+                            Text(text = "Keluar",
+                                fontSize = 20.sp,
+                                fontFamily = PlusJakartaSans,
+                                fontWeight = FontWeight.Bold)
+                        }
+                        ElevatedButton(
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = colorResource(id = R.color.orange),
+                                contentColor = colorResource(id = R.color.white)
+                            ),
+//                            modifier = Modifier
+//                                .width(240.dp),
+                            //.hoverable(interactionSource = hover),
+                            onClick = onBackButtonClick
+                        ) {
+                            Text(text = "Formulir",
+                                fontSize = 20.sp,
+                                fontFamily = PlusJakartaSans,
+                                fontWeight = FontWeight.Bold)
+                        }
+                    }
+                }
         })
     {
         Frame->
