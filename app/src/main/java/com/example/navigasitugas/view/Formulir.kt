@@ -1,5 +1,6 @@
 package com.example.navigasitugas.view
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import com.example.navigasitugas.R
 import androidx.compose.foundation.layout.Column
@@ -12,9 +13,17 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Text
@@ -26,10 +35,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.unit.toSize
 
 @Composable
 fun Formulir() {
@@ -45,6 +58,13 @@ fun Formulir() {
 
     val jenis: List<String> = listOf("Laki - Laki", "Perempuan")
     val nikah: List<String> = listOf("Menikah", "Belum Menikah", "Janda/Duda")
+
+    var expanded by remember { mutableStateOf(false) }
+    var ukrTextField by remember { mutableStateOf(Size.Zero) }
+    val icon = if (expanded)
+        Icons.Default.KeyboardArrowUp
+    else
+        Icons.Default.KeyboardArrowDown
 
     Column(modifier = Modifier
         .fillMaxWidth()
@@ -67,7 +87,7 @@ fun Formulir() {
         ) {
             Column(modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 20.dp,start = 20.dp, end = 20.dp),
+                .padding(top = 20.dp, start = 20.dp, end = 20.dp),
                 horizontalAlignment = Alignment.Start) {
                 Column {
                     Text(text = "Nama Lengkap",
@@ -122,7 +142,50 @@ fun Formulir() {
                         }
                     }
                 }
-
+                Spacer(modifier = Modifier.height(12.dp))
+                Column {
+                    Text("Status Perkawinan",
+                        fontFamily = PlusJakartaSans,
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 16.sp,
+                        color = colorResource(R.color.blue)
+                    )
+                    Spacer(modifier = Modifier.height(4.dp))
+                    TextField(value = txtStatus,
+                        onValueChange = {},
+                        readOnly = true,
+                        shape = RoundedCornerShape(12.dp),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .onGloballyPositioned { coordinates ->
+                                ukrTextField = coordinates.size.toSize()
+                            }
+                            .clickable(onClick = {expanded = !expanded}),
+                        label = { Text("Pilih Status")},
+                        trailingIcon = {
+                            IconButton(onClick = {expanded = !expanded}) {
+                                Icon(
+                                    icon, contentDescription = null
+                                )
+                            }
+                        }
+                    )
+                    DropdownMenu(
+                        modifier = Modifier
+                            .width(with(LocalDensity.current){ukrTextField.width.toDp()}),
+                        expanded = expanded,
+                        onDismissRequest = {expanded = false}
+                    ) {
+                        nikah.forEach { opsi ->
+                            DropdownMenuItem(
+                                text = {Text(opsi)},
+                                onClick = {txtStatus = opsi
+                                          expanded = false},
+                                modifier = Modifier.padding(start = 8.dp, end = 8.dp)
+                            )
+                        }
+                    }
+                }
             }
         }
 
