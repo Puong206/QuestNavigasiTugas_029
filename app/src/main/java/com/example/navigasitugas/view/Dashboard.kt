@@ -1,10 +1,7 @@
 package com.example.navigasitugas.view
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.hoverable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.interaction.collectIsHoveredAsState
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,12 +16,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedButton
@@ -35,10 +30,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -127,11 +119,11 @@ fun Dashboard(
                     {
                         ElevatedButton(
                             colors = (if (press) ButtonDefaults.buttonColors(
-                                containerColor = colorResource(id = R.color.orange),
-                                contentColor = colorResource(id = R.color.white))
-                                    else ButtonDefaults.buttonColors(
                                 containerColor = colorResource(id = R.color.white),
                                 contentColor = colorResource(id = R.color.orange))
+                                    else ButtonDefaults.buttonColors(
+                                containerColor = colorResource(id = R.color.orange),
+                                contentColor = colorResource(id = R.color.white))
                             ),
                             modifier = Modifier
                                 .width(160.dp)
@@ -144,10 +136,13 @@ fun Dashboard(
                                 fontWeight = FontWeight.Bold)
                         }
                         ElevatedButton(
-                            colors = ButtonDefaults.buttonColors(
+                            colors = (if (press) ButtonDefaults.buttonColors(
+                                containerColor = colorResource(id = R.color.white),
+                                contentColor = colorResource(id = R.color.orange))
+                            else ButtonDefaults.buttonColors(
                                 containerColor = colorResource(id = R.color.orange),
-                                contentColor = colorResource(id = R.color.white)
-                            ),
+                                contentColor = colorResource(id = R.color.white))
+                                    ),
                             modifier = Modifier
                                 .width(160.dp),
                             //.hoverable(interactionSource = hover),
@@ -162,9 +157,9 @@ fun Dashboard(
                 }
         })
     {
-        Frame->
+        frame->
         LazyColumn(modifier = Modifier
-            .padding(Frame),
+            .padding(frame),
             contentPadding = PaddingValues(start = 16.dp, end = 16.dp),
             horizontalAlignment = Alignment.CenterHorizontally) {
             items(items) { item ->
@@ -189,7 +184,7 @@ fun Dashboard(
                                 fontFamily = PlusJakartaSans,
                                 fontWeight = FontWeight.Bold,
                                 color = colorResource(R.color.blue))
-                            Text("${item.nama}",
+                            Text(item.nama,
                                 fontSize = 16.sp,
                                 fontFamily = PlusJakartaSans,
                                 fontWeight = FontWeight.Normal,
@@ -201,7 +196,7 @@ fun Dashboard(
                                 fontFamily = PlusJakartaSans,
                                 fontWeight = FontWeight.Bold,
                                 color = colorResource(R.color.blue))
-                            Text("${item.gender}",
+                            Text(item.gender,
                                 fontSize = 16.sp,
                                 fontFamily = PlusJakartaSans,
                                 fontWeight = FontWeight.Normal,
@@ -221,7 +216,7 @@ fun Dashboard(
                                 fontWeight = FontWeight.Bold,
                                 color = colorResource(R.color.blue),
                                 modifier = Modifier.width(120.dp))
-                            Text("${item.status}",
+                            Text(item.status,
                                 fontSize = 16.sp,
                                 fontFamily = PlusJakartaSans,
                                 fontWeight = FontWeight.Normal,
@@ -234,7 +229,7 @@ fun Dashboard(
                                 fontWeight = FontWeight.Bold,
                                 color = colorResource(R.color.blue),
                                 modifier = Modifier.width(120.dp))
-                            Text("${item.alamat}",
+                            Text(item.alamat,
                                 fontSize = 16.sp,
                                 fontFamily = PlusJakartaSans,
                                 fontWeight = FontWeight.Normal,
