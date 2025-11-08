@@ -7,6 +7,10 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -35,7 +39,9 @@ val PlusJakartaSans = FontFamily(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LandingPage() {
+fun LandingPage(
+    onBackButtonClick: () -> Unit
+) {
     Surface(modifier = Modifier.fillMaxSize(),
         color = colorResource(id = R.color.blue)) {
         Column(modifier = Modifier
@@ -57,6 +63,32 @@ fun LandingPage() {
                 modifier = Modifier
                     .height(48.dp)
             )
+            Spacer(modifier = Modifier.height(80.dp))
+            Text("Arya Bagas Saputra",
+                color = colorResource(id = R.color.white),
+                fontFamily = PlusJakartaSans,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Normal
+            )
+            Text("20230140029",
+                color = colorResource(id = R.color.white),
+                fontFamily = PlusJakartaSans,
+                fontSize = 12.sp,
+                fontWeight = FontWeight.Light
+            )
+            ElevatedButton(
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = colorResource(id = R.color.orange),
+                    contentColor = colorResource(id = R.color.white)
+                ),
+                modifier = Modifier.width(240.dp),
+                onClick = onBackButtonClick
+            ) {
+                Text(text = "Masuk",
+                    fontSize = 20.sp,
+                    fontFamily = PlusJakartaSans,
+                    fontWeight = FontWeight.Bold)
+            }
         }
     }
 }

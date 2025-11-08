@@ -24,7 +24,7 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize()
                 ) {
-                    LandingPage()
+                    LandingPage(onBackButtonClick = {})
                 }
             }
         }
