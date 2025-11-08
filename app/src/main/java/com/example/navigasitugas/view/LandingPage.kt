@@ -35,7 +35,7 @@ fun LandingPage() {
         color = colorResource(id = R.color.blue)) {
         Column(modifier = Modifier
             .fillMaxSize()
-            .padding(top = 80.dp),
+            .padding(top = 120.dp),
             verticalArrangement = Arrangement.SpaceBetween,
             horizontalAlignment = Alignment.CenterHorizontally) {
             Text("Selamat Datang",
