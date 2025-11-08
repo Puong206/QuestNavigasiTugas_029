@@ -16,6 +16,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.ArrowDropUp
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -212,6 +213,10 @@ fun Formulir(
                 Row {
                     ElevatedButton(
                         onClick = onSubmitButtonClick,
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = colorResource(R.color.orange),
+                            contentColor = colorResource(R.color.white)
+                        ),
                         modifier = Modifier.width(240.dp)
                     ) {
                         Text(text = "Simpan",
