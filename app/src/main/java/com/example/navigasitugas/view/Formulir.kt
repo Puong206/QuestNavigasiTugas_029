@@ -185,6 +185,24 @@ fun Formulir() {
                             )
                         }
                     }
+                    Spacer(modifier = Modifier.height(12.dp))
+                    Column {
+                        Text(text = "Alamat",
+                            fontFamily = PlusJakartaSans,
+                            fontWeight = FontWeight.SemiBold,
+                            fontSize = 16.sp,
+                            color = colorResource(R.color.blue)
+                        )
+                        Spacer(modifier = Modifier.height(4.dp))
+                        TextField(
+                            value = txtAlamat,
+                            onValueChange = {txtAlamat = it},
+                            modifier = Modifier
+                                .fillMaxWidth(),
+                            shape = RoundedCornerShape(12.dp)
+                        )
+                    }
+                    
                 }
             }
         }
