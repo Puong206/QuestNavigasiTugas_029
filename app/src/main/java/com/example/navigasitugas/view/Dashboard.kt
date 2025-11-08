@@ -31,17 +31,20 @@ fun Dashboard() {
         topBar = {
             TopAppBar(
                 title = {
-                    Row(modifier = Modifier.fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically)
+                    Row(modifier = Modifier
+                        .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center)
                     {
-                        Image(painter = painterResource(id = R.drawable.listdata),
-                            contentDescription = null,
-                            modifier = Modifier.height(16.dp))
-                        Spacer(modifier = Modifier.width(12.dp))
-                        Text("Dashboard",
+//                        Image(painter = painterResource(id = R.drawable.listdata),
+//                            contentDescription = null,
+//                            modifier = Modifier.height(16.dp))
+//                        Spacer(modifier = Modifier.width(12.dp))
+                        Text("List Daftar Peserta",
+                            color = colorResource(R.color.orange),
                             fontFamily = PlusJakartaSans,
-                            fontWeight = FontWeight.SemiBold,
-                            fontSize = 20.sp
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 24.sp,
+                            modifier = Modifier.padding(top = 40.dp, bottom = 20.dp)
                         )
                     }
                 },
