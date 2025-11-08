@@ -1,6 +1,11 @@
 package com.example.navigasitugas.view
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.hoverable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsHoveredAsState
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
@@ -26,8 +31,11 @@ import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -45,7 +53,8 @@ data class CardData(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Dashboard(
-    onBackButtonClick: () -> Unit
+    onExitButtonClick: () -> Unit,
+    onFormButtonClick: () -> Unit
 ) {
     val items = listOf(
         CardData(
@@ -79,6 +88,9 @@ fun Dashboard(
             alamat = "Tasikmalaya"
         )
     )
+    val interactionSource = remember { MutableInteractionSource() }
+    val press by interactionSource.collectIsPressedAsState()
+
     Scaffold(
         containerColor = colorResource(R.color.blue),
         topBar = {
@@ -114,14 +126,17 @@ fun Dashboard(
                     )
                     {
                         ElevatedButton(
-                            colors = ButtonDefaults.buttonColors(
+                            colors = (if (press) ButtonDefaults.buttonColors(
                                 containerColor = colorResource(id = R.color.orange),
-                                contentColor = colorResource(id = R.color.white)
+                                contentColor = colorResource(id = R.color.white))
+                                    else ButtonDefaults.buttonColors(
+                                containerColor = colorResource(id = R.color.white),
+                                contentColor = colorResource(id = R.color.orange))
                             ),
                             modifier = Modifier
-                                .width(160.dp),
-                            //.hoverable(interactionSource = hover),
-                            onClick = onBackButtonClick
+                                .width(160.dp)
+                                .hoverable(interactionSource = interactionSource),
+                            onClick = onExitButtonClick
                         ) {
                             Text(text = "Keluar",
                                 fontSize = 20.sp,
@@ -136,7 +151,7 @@ fun Dashboard(
                             modifier = Modifier
                                 .width(160.dp),
                             //.hoverable(interactionSource = hover),
-                            onClick = onBackButtonClick
+                            onClick = onFormButtonClick
                         ) {
                             Text(text = "Formulir",
                                 fontSize = 20.sp,
@@ -158,7 +173,6 @@ fun Dashboard(
                         defaultElevation = 8.dp
                     ),
                     modifier = Modifier
-                        //.size(width = 240.dp, height = 100.dp)
                         .padding(vertical = 8.dp),
                     colors = CardDefaults.cardColors(
                         colorResource(R.color.white)

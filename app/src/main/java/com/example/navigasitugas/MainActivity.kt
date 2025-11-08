@@ -28,7 +28,8 @@ class MainActivity : ComponentActivity() {
                     color = colorResource(id = R.color.blue)
                 ) {
                     //LandingPage(onBackButtonClick = {})
-                    Dashboard(onBackButtonClick = {})
+                    Dashboard(onExitButtonClick = {},
+                        onFormButtonClick = {})
                 }
             }
         }
