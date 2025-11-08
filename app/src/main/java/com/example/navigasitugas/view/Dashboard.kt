@@ -11,6 +11,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
@@ -99,6 +100,7 @@ fun Dashboard() {
         Frame->
         LazyColumn(modifier = Modifier
             .padding(Frame),
+            contentPadding = PaddingValues(start = 16.dp, end = 16.dp),
             horizontalAlignment = Alignment.CenterHorizontally) {
             items(items) { item ->
                 ElevatedCard(
@@ -113,7 +115,7 @@ fun Dashboard() {
                     )
                 ){
                     Row(modifier = Modifier
-                        .padding(top = 8.dp, start = 16.dp, end = 60.dp, bottom = 8.dp)
+                        .padding(top = 8.dp, start = 16.dp, end = 20.dp, bottom = 8.dp)
                         .fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween)
                     {
@@ -143,7 +145,7 @@ fun Dashboard() {
                         }
                     }
                     Row(modifier = Modifier
-                        .padding(top = 8.dp, start = 16.dp, end = 60.dp, bottom = 8.dp)
+                        .padding(top = 8.dp, start = 16.dp, end = 20.dp, bottom = 8.dp)
                         .fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween)
                     {
