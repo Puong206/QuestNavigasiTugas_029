@@ -15,6 +15,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.navigasitugas.ui.theme.NavigasiTugasTheme
 import com.example.navigasitugas.view.Dashboard
+import com.example.navigasitugas.view.Formulir
 import com.example.navigasitugas.view.LandingPage
 
 class MainActivity : ComponentActivity() {
@@ -28,8 +29,9 @@ class MainActivity : ComponentActivity() {
                     color = colorResource(id = R.color.blue)
                 ) {
                     //LandingPage(onBackButtonClick = {})
-                    Dashboard(onExitButtonClick = {},
-                        onFormButtonClick = {})
+//                    Dashboard(onExitButtonClick = {},
+//                        onFormButtonClick = {})
+                    Formulir()
                 }
             }
         }
