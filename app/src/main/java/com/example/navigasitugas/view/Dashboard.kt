@@ -13,22 +13,49 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+data class CardData(
+    val nama: String,
+    val gender: String,
+    val status: String,
+    val alamat: String
+)
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Dashboard() {
+    val items = listOf(
+        CardData(
+            nama = "Arya Bagas Saputra",
+            gender = "Laki - Laki",
+            status = "Belum Menikah",
+            alamat = "Kebumen"
+        ),
+        CardData(
+            nama = "M. Zaky Malika",
+            gender = "Laki - Laki",
+            status = "Belum Menikah",
+            alamat = "Bengkulu"
+        )
+    )
     Scaffold(
+        containerColor = colorResource(R.color.blue),
         topBar = {
             TopAppBar(
                 title = {
@@ -52,8 +79,42 @@ fun Dashboard() {
         }) {
         Frame->
         LazyColumn(modifier = Modifier
-            .padding(Frame)) {
+            .padding(Frame)
+            .fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally) {
+            items(items) { item ->
+                ElevatedCard(
+                    elevation = CardDefaults.cardElevation(
+                        defaultElevation = 8.dp
+                    ),
+                    modifier = Modifier
+                        .size(width = 240.dp, height = 100.dp)
+                        .padding(vertical = 8.dp),
+                    colors = CardDefaults.cardColors(
+                        colorResource(R.color.white)
+                    )
+                ){
+                    Row(modifier = Modifier
+                        .fillMaxWidth())
+                    {
+                        Column(
+                            modifier = Modifier.padding(top = 4.dp, start = 8.dp),
 
+                        ) {
+                            Text(text = "NAMA LENGKAP",
+                                fontSize = 16.sp,
+                                fontFamily = PlusJakartaSans,
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(R.color.blue))
+                            Text("${item.nama}",
+                                fontSize = 16.sp,
+                                fontFamily = PlusJakartaSans,
+                                fontWeight = FontWeight.Normal,
+                                color = colorResource(R.color.blue))
+                        }
+                    }
+                }
+            }
         }
     }
 }
