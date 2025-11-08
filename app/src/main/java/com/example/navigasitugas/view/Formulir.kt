@@ -73,13 +73,13 @@ fun Formulir() {
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     TextField(value = txtNama,
-
                         singleLine = true,
                         onValueChange = { txtNama = it },
                         shape = RoundedCornerShape(12.dp),
                         modifier = Modifier.fillMaxWidth()
                     )
                 }
+
             }
         }
 
