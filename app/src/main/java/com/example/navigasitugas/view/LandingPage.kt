@@ -11,10 +11,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ElevatedButton
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import com.example.navigasitugas.R
@@ -41,7 +39,6 @@ val PlusJakartaSans = FontFamily(
     Font(R.font.plusjakartasans_extrabold, FontWeight.ExtraBold)
 )
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LandingPage(
     onBackButtonClick: () -> Unit
