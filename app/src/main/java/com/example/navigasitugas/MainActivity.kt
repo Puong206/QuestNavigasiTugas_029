@@ -31,7 +31,9 @@ class MainActivity : ComponentActivity() {
                     //LandingPage(onBackButtonClick = {})
 //                    Dashboard(onExitButtonClick = {},
 //                        onFormButtonClick = {})
-                    Formulir()
+                    Formulir(onSubmitButtonClick = {},
+                    onResetButtonClick = {},
+                    onBackButtonClick = {})
                 }
             }
         }

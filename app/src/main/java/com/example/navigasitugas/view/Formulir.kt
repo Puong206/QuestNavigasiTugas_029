@@ -21,6 +21,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -45,7 +46,11 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
 
 @Composable
-fun Formulir() {
+fun Formulir(
+    onSubmitButtonClick: () -> Unit,
+    onResetButtonClick: () -> Unit,
+    onBackButtonClick: () -> Unit
+) {
     var txtNama by remember { mutableStateOf("") }
     var txtGender by remember { mutableStateOf("") }
     var txtStatus by remember { mutableStateOf("") }
@@ -185,24 +190,36 @@ fun Formulir() {
                             )
                         }
                     }
-                    Spacer(modifier = Modifier.height(12.dp))
-                    Column {
-                        Text(text = "Alamat",
+                }
+                Spacer(modifier = Modifier.height(12.dp))
+                Column {
+                    Text(text = "Alamat",
+                        fontFamily = PlusJakartaSans,
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 16.sp,
+                        color = colorResource(R.color.blue)
+                    )
+                    Spacer(modifier = Modifier.height(4.dp))
+                    TextField(
+                        value = txtAlamat,
+                        onValueChange = {txtAlamat = it},
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        shape = RoundedCornerShape(12.dp)
+                    )
+                }
+                Spacer(modifier = Modifier.height(12.dp))
+                Row {
+                    ElevatedButton(
+                        onClick = onSubmitButtonClick,
+                        modifier = Modifier.width(240.dp)
+                    ) {
+                        Text(text = "Simpan",
                             fontFamily = PlusJakartaSans,
-                            fontWeight = FontWeight.SemiBold,
-                            fontSize = 16.sp,
-                            color = colorResource(R.color.blue)
-                        )
-                        Spacer(modifier = Modifier.height(4.dp))
-                        TextField(
-                            value = txtAlamat,
-                            onValueChange = {txtAlamat = it},
-                            modifier = Modifier
-                                .fillMaxWidth(),
-                            shape = RoundedCornerShape(12.dp)
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 16.sp
                         )
                     }
-                    
                 }
             }
         }
