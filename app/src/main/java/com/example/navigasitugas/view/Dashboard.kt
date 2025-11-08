@@ -115,7 +115,7 @@ fun Dashboard() {
                     )
                 ){
                     Row(modifier = Modifier
-                        .padding(top = 8.dp, start = 16.dp, end = 20.dp, bottom = 8.dp)
+                        .padding(top = 8.dp, start = 16.dp, end = 20.dp, bottom = 2.dp)
                         .fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween)
                     {
@@ -145,7 +145,7 @@ fun Dashboard() {
                         }
                     }
                     Row(modifier = Modifier
-                        .padding(top = 8.dp, start = 16.dp, end = 20.dp, bottom = 8.dp)
+                        .padding(top = 2.dp, start = 16.dp, end = 20.dp, bottom = 8.dp)
                         .fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween)
                     {
@@ -162,10 +162,7 @@ fun Dashboard() {
                                 fontWeight = FontWeight.Normal,
                                 color = colorResource(R.color.blue))
                         }
-                        Column(
-                            modifier = Modifier.padding(top = 4.dp, start = 8.dp),
-
-                            ) {
+                        Column {
                             Text(text = "ALAMAT",
                                 fontSize = 16.sp,
                                 fontFamily = PlusJakartaSans,
