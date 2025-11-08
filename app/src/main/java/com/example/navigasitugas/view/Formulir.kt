@@ -14,9 +14,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.*
-import androidx.compose.material.icons.filled.KeyboardArrowDown
-import androidx.compose.material.icons.filled.KeyboardArrowUp
+import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.ArrowDropUp
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -65,10 +64,11 @@ fun Formulir(
 
     var expanded by remember { mutableStateOf(false) }
     var ukrTextField by remember { mutableStateOf(Size.Zero) }
+
     val icon = if (expanded)
-        Icons.Default.KeyboardArrowUp
+        Icons.Filled.ArrowDropUp
     else
-        Icons.Default.KeyboardArrowDown
+        Icons.Default.ArrowDropDown
 
     Column(modifier = Modifier
         .fillMaxWidth()
@@ -169,7 +169,8 @@ fun Formulir(
                         trailingIcon = {
                             IconButton(onClick = {expanded = !expanded}) {
                                 Icon(
-                                    icon, contentDescription = null
+                                    icon,
+                                    contentDescription = null
                                 )
                             }
                         }
