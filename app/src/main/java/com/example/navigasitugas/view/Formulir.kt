@@ -18,6 +18,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.ArrowDropUp
+import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
@@ -224,7 +225,7 @@ fun Formulir(
                     OutlinedButton(
                         onClick = onResetButtonClick,
                         shape = RoundedCornerShape(16.dp),
-                        border = BorderStroke(1.dp,colorResource(R.color.orange)),
+                        border = BorderStroke(2.dp,colorResource(R.color.orange)),
                         colors = ButtonDefaults.outlinedButtonColors(
                             containerColor = colorResource(R.color.white),
                             contentColor = colorResource(R.color.orange)
@@ -238,8 +239,9 @@ fun Formulir(
                             fontSize = 16.sp
                         )
                     }
-                    ElevatedButton(
+                    Button(
                         onClick = onSubmitButtonClick,
+                        shape = RoundedCornerShape(16.dp),
                         colors = ButtonDefaults.buttonColors(
                             containerColor = colorResource(R.color.orange),
                             contentColor = colorResource(R.color.white)
