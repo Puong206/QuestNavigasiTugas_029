@@ -1,5 +1,7 @@
 package com.example.navigasitugas.view
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import com.example.navigasitugas.R
@@ -22,8 +24,12 @@ import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Text
@@ -44,6 +50,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Formulir(
     onSubmitButtonClick: () -> Unit,
@@ -156,39 +163,41 @@ fun Formulir(
                         color = colorResource(R.color.blue)
                     )
                     Spacer(modifier = Modifier.height(4.dp))
-                    TextField(value = txtStatus,
-                        onValueChange = {},
-                        readOnly = true,
-                        shape = RoundedCornerShape(12.dp),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .onGloballyPositioned { coordinates ->
-                                ukrTextField = coordinates.size.toSize()
-                            }
-                            .clickable(onClick = {expanded = !expanded}),
-                        label = { Text("Pilih Status")},
-                        trailingIcon = {
-                            IconButton(onClick = {expanded = !expanded}) {
-                                Icon(
-                                    icon,
-                                    contentDescription = null
+                    ExposedDropdownMenuBox(
+                        expanded = expanded,
+                        onExpandedChange = { expanded = expanded},
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        TextField(value = txtStatus,
+                            onValueChange = {},
+                            readOnly = true,
+                            shape = RoundedCornerShape(12.dp),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .menuAnchor(),
+                            label = { Text("Pilih Status")},
+                            trailingIcon = {
+                                IconButton(onClick = {expanded = !expanded}) {
+                                    Icon(
+                                        icon,
+                                        contentDescription = null
+                                    )
+                                }
+                            },
+                        )
+                        ExposedDropdownMenu(
+                            expanded = expanded,
+                            onDismissRequest = {expanded = false}
+                        ) {
+                            nikah.forEach {
+                                opsi ->
+                                DropdownMenuItem(
+                                    text = {Text(opsi)},
+                                    onClick = {txtStatus = opsi
+                                    expanded = false},
+                                    contentPadding = ExposedDropdownMenuDefaults.ItemContentPadding
                                 )
                             }
-                        }
-                    )
-                    DropdownMenu(
-                        modifier = Modifier
-                            .width(with(LocalDensity.current){ukrTextField.width.toDp()}),
-                        expanded = expanded,
-                        onDismissRequest = {expanded = false}
-                    ) {
-                        nikah.forEach { opsi ->
-                            DropdownMenuItem(
-                                text = {Text(opsi)},
-                                onClick = {txtStatus = opsi
-                                          expanded = false},
-                                modifier = Modifier.padding(start = 8.dp, end = 8.dp)
-                            )
                         }
                     }
                 }
@@ -212,13 +221,16 @@ fun Formulir(
                 Spacer(modifier = Modifier.height(208.dp))
                 Row(modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween) {
-                    ElevatedButton(
+                    OutlinedButton(
                         onClick = onResetButtonClick,
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = colorResource(R.color.orange),
-                            contentColor = colorResource(R.color.white)
+                        shape = RoundedCornerShape(16.dp),
+                        border = BorderStroke(1.dp,colorResource(R.color.orange)),
+                        colors = ButtonDefaults.outlinedButtonColors(
+                            containerColor = colorResource(R.color.white),
+                            contentColor = colorResource(R.color.orange)
                         ),
-                        modifier = Modifier.width(140.dp)
+                        modifier = Modifier
+                            .width(140.dp)
                     ) {
                         Text(text = "Batal",
                             fontFamily = PlusJakartaSans,

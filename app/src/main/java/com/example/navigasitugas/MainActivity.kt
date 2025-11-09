@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = colorResource(id = R.color.blue)
                 ) {
-                    //LandingPage(onBackButtonClick = {})
+//                    LandingPage(onBackButtonClick = {})
 //                    Dashboard(onExitButtonClick = {},
 //                        onFormButtonClick = {})
                     Formulir(onSubmitButtonClick = {},
