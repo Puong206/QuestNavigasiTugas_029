@@ -90,7 +90,7 @@ fun LandingPage(
                     modifier = Modifier
                         .width(240.dp),
                         //.hoverable(interactionSource = hover),
-                    onClick = onBackButtonClick
+                    onClick = onStartButtonClick
                 ) {
                     Text(text = "Masuk",
                         fontSize = 20.sp,
