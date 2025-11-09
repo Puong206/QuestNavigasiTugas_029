@@ -41,7 +41,7 @@ val PlusJakartaSans = FontFamily(
 
 @Composable
 fun LandingPage(
-    onBackButtonClick: () -> Unit
+    onStartButtonClick: () -> Unit
 ) {
     Surface(modifier = Modifier.fillMaxSize(),
         color = colorResource(id = R.color.blue)) {
