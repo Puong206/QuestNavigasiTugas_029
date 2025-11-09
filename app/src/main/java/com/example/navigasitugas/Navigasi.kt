@@ -1,5 +1,7 @@
 package com.example.navigasitugas
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -24,11 +26,11 @@ enum class Navigasi {
 fun App(
     navController: NavHostController = rememberNavController()
 ){
-    Scaffold { frame1 ->
+    Box() {
         NavHost(
             navController = navController,
             startDestination = Navigasi.Start.name,
-            modifier = Modifier.padding(frame1))
+            modifier = Modifier.fillMaxSize())
         {
             composable(route = Navigasi.Start.name) {
                 LandingPage(
