@@ -1,5 +1,6 @@
 package com.example.navigasitugas.view
 
+import android.graphics.drawable.Icon
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Arrangement
 import com.example.navigasitugas.R
@@ -16,6 +17,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.ArrowDropUp
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardDefaults
@@ -31,6 +34,7 @@ import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -66,12 +70,41 @@ fun Formulir(
     val nikah: List<String> = listOf("Menikah", "Belum Menikah", "Janda/Duda")
 
     var expanded by remember { mutableStateOf(false) }
-    var ukrTextField by remember { mutableStateOf(Size.Zero) }
 
     val icon = if (expanded)
         Icons.Filled.ArrowDropUp
     else
         Icons.Default.ArrowDropDown
+
+
+
+    var showDialog by remember { mutableStateOf(false) }
+
+
+
+    if (showDialog) {
+        AlertDialog(
+            onDismissRequest = { showDialog = false },
+            icon = {Icon(Icons.Default.Check, null)},
+            title = {Text(text = "Berhasil")},
+            text = {
+                Column {
+                    Text(text = "Nama: $nama")
+                    Text(text = "Jenis Kelamin: $gender")
+                    Text(text = "Status Perkawinan: $status")
+                    Text(text = "Alamat: $alamat")
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = {
+                    showDialog = false
+                    
+                }) {
+                    Text("Ok")
+                }
+            }
+        )
+    }
 
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -276,7 +309,7 @@ fun Formulir(
                                 gender = txtGender
                                 status = txtStatus
                                 alamat = txtAlamat
-                                onSubmitButtonClick
+                                showDialog = true
                             }
                         ) {
                             Text(
