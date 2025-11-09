@@ -73,8 +73,10 @@ fun Formulir(
     else
         Icons.Default.ArrowDropDown
 
-    Surface(modifier = Modifier.fillMaxSize(),
-        color = colorResource(R.color.blue))
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = colorResource(R.color.blue)
+    )
     {
         Column(
             modifier = Modifier
@@ -100,141 +102,148 @@ fun Formulir(
                 )
             ) {
                 Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 20.dp, start = 20.dp, end = 20.dp),
-                    horizontalAlignment = Alignment.Start
+                    modifier = Modifier.fillMaxSize(),
+                    verticalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Column {
-                        Text(
-                            text = "Nama Lengkap",
-                            fontFamily = PlusJakartaSans,
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.SemiBold,
-                            color = colorResource(R.color.blue)
-                        )
-                        Spacer(modifier = Modifier.height(8.dp))
-                        TextField(
-                            value = txtNama,
-                            singleLine = true,
-                            onValueChange = { txtNama = it },
-                            shape = RoundedCornerShape(12.dp),
-                            modifier = Modifier.fillMaxWidth()
-                        )
-                    }
-                    Spacer(modifier = Modifier.height(12.dp))
-                    Column {
-                        Text(
-                            text = "Jenis Kelamin",
-                            fontFamily = PlusJakartaSans,
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.SemiBold,
-                            color = colorResource(R.color.blue)
-                        )
-                        Spacer(modifier = Modifier.height(4.dp))
-                        Row {
-                            jenis.forEach { item ->
-                                Row(
-                                    modifier = Modifier.selectable(
-                                    selected = txtGender == item,
-                                    onClick = { txtGender = item }
-                                ), verticalAlignment = Alignment.CenterVertically) {
-                                    RadioButton(
-                                        selected = txtGender == item,
-                                        onClick = { txtGender = item },
-                                        colors = RadioButtonDefaults.colors(
-                                            selectedColor = colorResource(R.color.blue),
-                                            unselectedColor = colorResource(R.color.blue)
-                                        ),
-                                        modifier = Modifier
-                                            .width(12.dp)
-                                            .height(12.dp)
-                                            .padding(start = 8.dp)
-                                    )
-                                    Spacer(modifier = Modifier.width(12.dp))
-                                    Text(
-                                        item,
-                                        fontFamily = PlusJakartaSans,
-                                        fontWeight = FontWeight.Medium,
-                                        fontSize = 14.sp,
-                                        color = colorResource(R.color.blue)
-                                    )
-                                    Spacer(modifier = Modifier.width(20.dp))
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 20.dp, start = 20.dp, end = 20.dp),
+                        horizontalAlignment = Alignment.Start,
+                        verticalArrangement = Arrangement.SpaceEvenly
+                    ) {
+                        Column {
+                            Text(
+                                text = "Nama Lengkap",
+                                fontFamily = PlusJakartaSans,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.SemiBold,
+                                color = colorResource(R.color.blue)
+                            )
+                            Spacer(modifier = Modifier.height(8.dp))
+                            TextField(
+                                value = txtNama,
+                                singleLine = true,
+                                onValueChange = { txtNama = it },
+                                shape = RoundedCornerShape(12.dp),
+                                modifier = Modifier.fillMaxWidth()
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(12.dp))
+                        Column {
+                            Text(
+                                text = "Jenis Kelamin",
+                                fontFamily = PlusJakartaSans,
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.SemiBold,
+                                color = colorResource(R.color.blue)
+                            )
+                            Spacer(modifier = Modifier.height(4.dp))
+                            Row {
+                                jenis.forEach { item ->
+                                    Row(
+                                        modifier = Modifier.selectable(
+                                            selected = txtGender == item,
+                                            onClick = { txtGender = item }
+                                        ), verticalAlignment = Alignment.CenterVertically) {
+                                        RadioButton(
+                                            selected = txtGender == item,
+                                            onClick = { txtGender = item },
+                                            colors = RadioButtonDefaults.colors(
+                                                selectedColor = colorResource(R.color.blue),
+                                                unselectedColor = colorResource(R.color.blue)
+                                            ),
+                                            modifier = Modifier
+                                                .width(12.dp)
+                                                .height(12.dp)
+                                                .padding(start = 8.dp)
+                                        )
+                                        Spacer(modifier = Modifier.width(12.dp))
+                                        Text(
+                                            item,
+                                            fontFamily = PlusJakartaSans,
+                                            fontWeight = FontWeight.Medium,
+                                            fontSize = 14.sp,
+                                            color = colorResource(R.color.blue)
+                                        )
+                                        Spacer(modifier = Modifier.width(20.dp))
+                                    }
                                 }
                             }
                         }
-                    }
-                    Spacer(modifier = Modifier.height(12.dp))
-                    Column {
-                        Text(
-                            "Status Perkawinan",
-                            fontFamily = PlusJakartaSans,
-                            fontWeight = FontWeight.SemiBold,
-                            fontSize = 16.sp,
-                            color = colorResource(R.color.blue)
-                        )
-                        Spacer(modifier = Modifier.height(4.dp))
-                        ExposedDropdownMenuBox(
-                            expanded = expanded,
-                            onExpandedChange = { expanded = it },
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            TextField(
-                                value = txtStatus,
-                                onValueChange = {},
-                                readOnly = true,
-                                shape = RoundedCornerShape(12.dp),
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .menuAnchor(),
-                                label = { Text("Pilih Status") },
-                                trailingIcon = {
-                                    IconButton(onClick = {}) {
-                                        Icon(
-                                            icon,
-                                            contentDescription = null
+                        Spacer(modifier = Modifier.height(12.dp))
+                        Column {
+                            Text(
+                                "Status Perkawinan",
+                                fontFamily = PlusJakartaSans,
+                                fontWeight = FontWeight.SemiBold,
+                                fontSize = 16.sp,
+                                color = colorResource(R.color.blue)
+                            )
+                            Spacer(modifier = Modifier.height(4.dp))
+                            ExposedDropdownMenuBox(
+                                expanded = expanded,
+                                onExpandedChange = { expanded = it },
+                                modifier = Modifier.fillMaxWidth()
+                            ) {
+                                TextField(
+                                    value = txtStatus,
+                                    onValueChange = {},
+                                    readOnly = true,
+                                    shape = RoundedCornerShape(12.dp),
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .menuAnchor(),
+                                    label = { Text("Pilih Status") },
+                                    trailingIcon = {
+                                        IconButton(onClick = {}) {
+                                            Icon(
+                                                icon,
+                                                contentDescription = null
+                                            )
+                                        }
+                                    },
+                                )
+                                ExposedDropdownMenu(
+                                    expanded = expanded,
+                                    onDismissRequest = { expanded = false }
+                                ) {
+                                    nikah.forEach { opsi ->
+                                        DropdownMenuItem(
+                                            text = { Text(opsi) },
+                                            onClick = {
+                                                txtStatus = opsi
+                                                expanded = false
+                                            },
+                                            contentPadding = ExposedDropdownMenuDefaults.ItemContentPadding
                                         )
                                     }
-                                },
-                            )
-                            ExposedDropdownMenu(
-                                expanded = expanded,
-                                onDismissRequest = { expanded = false }
-                            ) {
-                                nikah.forEach { opsi ->
-                                    DropdownMenuItem(
-                                        text = { Text(opsi) },
-                                        onClick = {
-                                            txtStatus = opsi
-                                            expanded = false
-                                        },
-                                        contentPadding = ExposedDropdownMenuDefaults.ItemContentPadding
-                                    )
                                 }
                             }
                         }
+                        Spacer(modifier = Modifier.height(12.dp))
+                        Column {
+                            Text(
+                                text = "Alamat",
+                                fontFamily = PlusJakartaSans,
+                                fontWeight = FontWeight.SemiBold,
+                                fontSize = 16.sp,
+                                color = colorResource(R.color.blue)
+                            )
+                            Spacer(modifier = Modifier.height(4.dp))
+                            TextField(
+                                value = txtAlamat,
+                                onValueChange = { txtAlamat = it },
+                                modifier = Modifier
+                                    .fillMaxWidth(),
+                                shape = RoundedCornerShape(12.dp)
+                            )
+                        }
                     }
-                    Spacer(modifier = Modifier.height(12.dp))
-                    Column {
-                        Text(
-                            text = "Alamat",
-                            fontFamily = PlusJakartaSans,
-                            fontWeight = FontWeight.SemiBold,
-                            fontSize = 16.sp,
-                            color = colorResource(R.color.blue)
-                        )
-                        Spacer(modifier = Modifier.height(4.dp))
-                        TextField(
-                            value = txtAlamat,
-                            onValueChange = { txtAlamat = it },
-                            modifier = Modifier
-                                .fillMaxWidth(),
-                            shape = RoundedCornerShape(12.dp)
-                        )
-                    }
-                    Spacer(modifier = Modifier.height(126.dp))
                     Row(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(start = 20.dp, end = 20.dp, bottom = 20.dp),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         OutlinedButton(
@@ -245,9 +254,9 @@ fun Formulir(
                                 containerColor = colorResource(R.color.white),
                                 contentColor = colorResource(R.color.orange)
                             ),
-                            modifier = Modifier
-                                .width(140.dp)
-                        ) {
+                            modifier = Modifier.width(120.dp)
+                        )
+                        {
                             Text(
                                 text = "Batal",
                                 fontFamily = PlusJakartaSans,
@@ -256,7 +265,7 @@ fun Formulir(
                             )
                         }
                         Button(
-                            modifier = Modifier.width(140.dp),
+                            modifier = Modifier.width(120.dp),
                             shape = RoundedCornerShape(16.dp),
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = colorResource(R.color.orange),
