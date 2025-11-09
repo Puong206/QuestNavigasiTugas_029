@@ -78,8 +78,8 @@ fun Formulir(
     {
         Column(
             modifier = Modifier
-                .fillMaxWidth(),
-            //.padding(top = 80.dp),
+                .fillMaxWidth()
+                .padding(top = 80.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
@@ -232,7 +232,7 @@ fun Formulir(
                             shape = RoundedCornerShape(12.dp)
                         )
                     }
-                    Spacer(modifier = Modifier.height(208.dp))
+                    Spacer(modifier = Modifier.height(126.dp))
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween
