@@ -13,14 +13,13 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.BottomAppBar
@@ -87,41 +86,40 @@ fun Dashboard(
     val interactionSource = remember { MutableInteractionSource() }
     val press by interactionSource.collectIsPressedAsState()
 
-    Scaffold(
-//        containerColor = colorResource(R.color.blue),
-        modifier = Modifier.fillMaxSize(),
-        topBar = {
-            TopAppBar(
-                title = {
-                    Row(modifier = Modifier
-                        .fillMaxWidth(),
-                        horizontalArrangement = Arrangement.Center)
-                    {
-                        Text("List Daftar Peserta",
-                            color = colorResource(R.color.orange),
-                            fontFamily = PlusJakartaSans,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 24.sp,
-                            modifier = Modifier
-                                .padding(bottom = 20.dp)
+    Box(modifier = Modifier.fillMaxSize())
+    {
+        Scaffold(
+            containerColor = colorResource(R.color.blue),
+            topBar = {
+                TopAppBar(
+                    title = {
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.Center
                         )
-                    }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = colorResource(R.color.blue)
+                        {
+                            Text(
+                                "List Daftar Peserta",
+                                color = colorResource(R.color.orange),
+                                fontFamily = PlusJakartaSans,
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 24.sp,
+                                modifier = Modifier.padding(top = 20.dp,bottom = 20.dp)
+                            )
+                        }
+                    },
+                    colors = TopAppBarDefaults.topAppBarColors(
+                        containerColor = colorResource(R.color.blue)
+                    )
                 )
-            )
-        },
-        bottomBar = {
-            BottomAppBar(
-                containerColor = colorResource(R.color.blue),
-                modifier = Modifier
-                    .height(70.dp)
-                    //.padding(bottom = 20.dp)
-            ) {
-                    Row(modifier = Modifier
-                        .fillMaxWidth(),
-//                        .padding(top = 60.dp),
+            },
+            bottomBar = {
+                BottomAppBar(
+                    containerColor = colorResource(R.color.blue)
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceEvenly,
                         verticalAlignment = Alignment.CenterVertically
                     )
@@ -129,120 +127,152 @@ fun Dashboard(
                         ElevatedButton(
                             colors = (if (press) ButtonDefaults.buttonColors(
                                 containerColor = colorResource(id = R.color.white),
-                                contentColor = colorResource(id = R.color.orange))
-                                    else ButtonDefaults.buttonColors(
+                                contentColor = colorResource(id = R.color.orange)
+                            )
+                            else ButtonDefaults.buttonColors(
                                 containerColor = colorResource(id = R.color.orange),
-                                contentColor = colorResource(id = R.color.white))
-                            ),
+                                contentColor = colorResource(id = R.color.white)
+                            )
+                                    ),
                             modifier = Modifier
                                 .width(160.dp)
                                 .hoverable(interactionSource = interactionSource),
-                            onClick = onExitButtonClick
+                            onClick = onExitButtonClick,
                         ) {
-                            Text(text = "Keluar",
+                            Text(
+                                text = "Keluar",
                                 fontSize = 20.sp,
                                 fontFamily = PlusJakartaSans,
-                                fontWeight = FontWeight.Bold)
+                                fontWeight = FontWeight.Bold
+                            )
                         }
                         ElevatedButton(
                             colors = (if (press) ButtonDefaults.buttonColors(
                                 containerColor = colorResource(id = R.color.white),
-                                contentColor = colorResource(id = R.color.orange))
+                                contentColor = colorResource(id = R.color.orange)
+                            )
                             else ButtonDefaults.buttonColors(
                                 containerColor = colorResource(id = R.color.orange),
-                                contentColor = colorResource(id = R.color.white))
+                                contentColor = colorResource(id = R.color.white)
+                            )
                                     ),
                             modifier = Modifier
                                 .width(160.dp),
                             //.hoverable(interactionSource = hover),
                             onClick = onFormButtonClick
                         ) {
-                            Text(text = "Formulir",
+                            Text(
+                                text = "Formulir",
                                 fontSize = 20.sp,
                                 fontFamily = PlusJakartaSans,
-                                fontWeight = FontWeight.Bold)
+                                fontWeight = FontWeight.Bold
+                            )
                         }
                     }
                 }
-        })
-    {
-        frame->
-        LazyColumn(modifier = Modifier
-            .padding(frame),
-            contentPadding = PaddingValues(start = 16.dp, end = 16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally) {
-            items(items) { item ->
-                ElevatedCard(
-                    elevation = CardDefaults.cardElevation(
-                        defaultElevation = 8.dp
-                    ),
-                    modifier = Modifier
-                        .padding(vertical = 8.dp),
-                    colors = CardDefaults.cardColors(
-                        colorResource(R.color.white)
-                    )
-                ){
-                    Row(modifier = Modifier
-                        .padding(top = 12.dp, start = 16.dp, end = 20.dp)
-                        .fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween)
-                    {
-                        Column {
-                            Text(text = "NAMA LENGKAP",
-                                fontSize = 16.sp,
-                                fontFamily = PlusJakartaSans,
-                                fontWeight = FontWeight.Bold,
-                                color = colorResource(R.color.blue))
-                            Text(item.nama,
-                                fontSize = 16.sp,
-                                fontFamily = PlusJakartaSans,
-                                fontWeight = FontWeight.Normal,
-                                color = colorResource(R.color.blue))
+            })
+        { frame ->
+            LazyColumn(
+                modifier = Modifier
+                    .padding(frame)
+                    .fillMaxSize(),
+                //.navigationBarsPadding(),
+                contentPadding = PaddingValues(start = 16.dp, end = 16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                items(items) { item ->
+                    ElevatedCard(
+                        elevation = CardDefaults.cardElevation(
+                            defaultElevation = 8.dp
+                        ),
+                        modifier = Modifier
+                            .padding(vertical = 8.dp),
+                        colors = CardDefaults.cardColors(
+                            colorResource(R.color.white)
+                        )
+                    ) {
+                        Row(
+                            modifier = Modifier
+                                .padding(top = 12.dp, start = 16.dp, end = 20.dp)
+                                .fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        )
+                        {
+                            Column {
+                                Text(
+                                    text = "NAMA LENGKAP",
+                                    fontSize = 16.sp,
+                                    fontFamily = PlusJakartaSans,
+                                    fontWeight = FontWeight.Bold,
+                                    color = colorResource(R.color.blue)
+                                )
+                                Text(
+                                    item.nama,
+                                    fontSize = 16.sp,
+                                    fontFamily = PlusJakartaSans,
+                                    fontWeight = FontWeight.Normal,
+                                    color = colorResource(R.color.blue)
+                                )
+                            }
+                            Column {
+                                Text(
+                                    text = "JENIS KELAMIN",
+                                    fontSize = 16.sp,
+                                    fontFamily = PlusJakartaSans,
+                                    fontWeight = FontWeight.Bold,
+                                    color = colorResource(R.color.blue)
+                                )
+                                Text(
+                                    item.gender,
+                                    fontSize = 16.sp,
+                                    fontFamily = PlusJakartaSans,
+                                    fontWeight = FontWeight.Normal,
+                                    color = colorResource(R.color.blue)
+                                )
+                            }
                         }
-                        Column {
-                            Text(text = "JENIS KELAMIN",
-                                fontSize = 16.sp,
-                                fontFamily = PlusJakartaSans,
-                                fontWeight = FontWeight.Bold,
-                                color = colorResource(R.color.blue))
-                            Text(item.gender,
-                                fontSize = 16.sp,
-                                fontFamily = PlusJakartaSans,
-                                fontWeight = FontWeight.Normal,
-                                color = colorResource(R.color.blue))
-                        }
-                    }
-                    Spacer(modifier = Modifier.height(12.dp))
-                    Row(modifier = Modifier
-                        .padding(start = 16.dp, end = 20.dp, bottom = 12.dp)
-                        .fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween)
-                    {
-                        Column {
-                            Text(text = "STATUS PERKAWINAN",
-                                fontSize = 16.sp,
-                                fontFamily = PlusJakartaSans,
-                                fontWeight = FontWeight.Bold,
-                                color = colorResource(R.color.blue),
-                                modifier = Modifier.width(120.dp))
-                            Text(item.status,
-                                fontSize = 16.sp,
-                                fontFamily = PlusJakartaSans,
-                                fontWeight = FontWeight.Normal,
-                                color = colorResource(R.color.blue))
-                        }
-                        Column {
-                            Text(text = "ALAMAT",
-                                fontSize = 16.sp,
-                                fontFamily = PlusJakartaSans,
-                                fontWeight = FontWeight.Bold,
-                                color = colorResource(R.color.blue),
-                                modifier = Modifier.width(120.dp))
-                            Text(item.alamat,
-                                fontSize = 16.sp,
-                                fontFamily = PlusJakartaSans,
-                                fontWeight = FontWeight.Normal,
-                                color = colorResource(R.color.blue))
+                        Spacer(modifier = Modifier.height(12.dp))
+                        Row(
+                            modifier = Modifier
+                                .padding(start = 16.dp, end = 20.dp, bottom = 12.dp)
+                                .fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        )
+                        {
+                            Column {
+                                Text(
+                                    text = "STATUS PERKAWINAN",
+                                    fontSize = 16.sp,
+                                    fontFamily = PlusJakartaSans,
+                                    fontWeight = FontWeight.Bold,
+                                    color = colorResource(R.color.blue),
+                                    modifier = Modifier.width(120.dp)
+                                )
+                                Text(
+                                    item.status,
+                                    fontSize = 16.sp,
+                                    fontFamily = PlusJakartaSans,
+                                    fontWeight = FontWeight.Normal,
+                                    color = colorResource(R.color.blue)
+                                )
+                            }
+                            Column {
+                                Text(
+                                    text = "ALAMAT",
+                                    fontSize = 16.sp,
+                                    fontFamily = PlusJakartaSans,
+                                    fontWeight = FontWeight.Bold,
+                                    color = colorResource(R.color.blue),
+                                    modifier = Modifier.width(120.dp)
+                                )
+                                Text(
+                                    item.alamat,
+                                    fontSize = 16.sp,
+                                    fontFamily = PlusJakartaSans,
+                                    fontWeight = FontWeight.Normal,
+                                    color = colorResource(R.color.blue)
+                                )
+                            }
                         }
                     }
                 }
