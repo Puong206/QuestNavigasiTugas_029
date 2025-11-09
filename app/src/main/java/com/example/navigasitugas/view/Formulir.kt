@@ -76,7 +76,12 @@ fun Formulir(
     else
         Icons.Default.ArrowDropDown
 
-
+    fun clearData() {
+        txtNama = ""
+        txtGender = ""
+        txtStatus = ""
+        txtAlamat = ""
+    }
 
     var showDialog by remember { mutableStateOf(false) }
 
@@ -98,7 +103,7 @@ fun Formulir(
             confirmButton = {
                 TextButton(onClick = {
                     showDialog = false
-                    
+                    clearData()
                 }) {
                     Text("Ok")
                 }
