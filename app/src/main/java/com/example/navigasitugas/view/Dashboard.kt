@@ -98,7 +98,7 @@ fun Dashboard(
                             fontWeight = FontWeight.Bold,
                             fontSize = 24.sp,
                             modifier = Modifier
-                                .padding(top = 40.dp, bottom = 20.dp)
+                                .padding(bottom = 20.dp)
                         )
                     }
                 },
