@@ -15,8 +15,12 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.BottomAppBar
@@ -84,7 +88,8 @@ fun Dashboard(
     val press by interactionSource.collectIsPressedAsState()
 
     Scaffold(
-        containerColor = colorResource(R.color.blue),
+//        containerColor = colorResource(R.color.blue),
+        modifier = Modifier.fillMaxSize(),
         topBar = {
             TopAppBar(
                 title = {
@@ -109,10 +114,15 @@ fun Dashboard(
         },
         bottomBar = {
             BottomAppBar(
-                containerColor = colorResource(R.color.blue)
+                containerColor = colorResource(R.color.blue),
+                modifier = Modifier
+                    .height(70.dp)
+                    //.padding(bottom = 20.dp)
+                    .navigationBarsPadding()
             ) {
                     Row(modifier = Modifier
                         .fillMaxWidth(),
+//                        .padding(top = 60.dp),
                         horizontalArrangement = Arrangement.SpaceEvenly,
                         verticalAlignment = Alignment.CenterVertically
                     )
