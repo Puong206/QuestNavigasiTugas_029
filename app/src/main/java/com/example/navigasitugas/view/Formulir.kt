@@ -1,8 +1,6 @@
 package com.example.navigasitugas.view
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import com.example.navigasitugas.R
 import androidx.compose.foundation.layout.Column
@@ -21,9 +19,7 @@ import androidx.compose.material.icons.filled.ArrowDropUp
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
@@ -35,7 +31,6 @@ import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
@@ -44,13 +39,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.unit.toSize
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -81,8 +73,8 @@ fun Formulir(
         Icons.Default.ArrowDropDown
 
     Column(modifier = Modifier
-        .fillMaxWidth()
-        .padding(top = 80.dp),
+        .fillMaxWidth(),
+        //.padding(top = 80.dp),
         horizontalAlignment = Alignment.CenterHorizontally) {
         Text(text = "Formulir Pendaftaran",
             fontFamily = PlusJakartaSans,
@@ -224,7 +216,7 @@ fun Formulir(
                 Row(modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween) {
                     OutlinedButton(
-                        onClick = onResetButtonClick,
+                        onClick = onBackButtonClick,
                         shape = RoundedCornerShape(16.dp),
                         border = BorderStroke(2.dp,colorResource(R.color.orange)),
                         colors = ButtonDefaults.outlinedButtonColors(
