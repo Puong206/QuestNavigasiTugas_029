@@ -118,7 +118,6 @@ fun Dashboard(
                 modifier = Modifier
                     .height(70.dp)
                     //.padding(bottom = 20.dp)
-                    .navigationBarsPadding()
             ) {
                     Row(modifier = Modifier
                         .fillMaxWidth(),
