@@ -309,6 +309,11 @@ fun Formulir(
                                 containerColor = colorResource(R.color.orange),
                                 contentColor = colorResource(R.color.white)
                             ),
+                            enabled =
+                                txtNama.isNotEmpty() &&
+                            txtGender.isNotEmpty() &&
+                            txtStatus.isNotEmpty() &&
+                            txtAlamat.isNotEmpty(),
                             onClick = {
                                 nama = txtNama
                                 gender = txtGender
