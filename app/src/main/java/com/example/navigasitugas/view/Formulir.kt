@@ -35,6 +35,7 @@ import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
@@ -240,13 +241,19 @@ fun Formulir(
                         )
                     }
                     Button(
-                        onClick = onSubmitButtonClick,
+                        modifier = Modifier.width(140.dp),
                         shape = RoundedCornerShape(16.dp),
                         colors = ButtonDefaults.buttonColors(
                             containerColor = colorResource(R.color.orange),
                             contentColor = colorResource(R.color.white)
                         ),
-                        modifier = Modifier.width(140.dp)
+                        onClick = {
+                            nama = txtNama
+                            gender = txtGender
+                            status = txtStatus
+                            alamat = txtAlamat
+                            onSubmitButtonClick
+                        }
                     ) {
                         Text(text = "Simpan",
                             fontFamily = PlusJakartaSans,
