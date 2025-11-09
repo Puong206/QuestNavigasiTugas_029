@@ -165,7 +165,7 @@ fun Formulir(
                     Spacer(modifier = Modifier.height(4.dp))
                     ExposedDropdownMenuBox(
                         expanded = expanded,
-                        onExpandedChange = { expanded = expanded},
+                        onExpandedChange = { expanded = it},
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         TextField(value = txtStatus,
@@ -177,7 +177,7 @@ fun Formulir(
                                 .menuAnchor(),
                             label = { Text("Pilih Status")},
                             trailingIcon = {
-                                IconButton(onClick = {expanded = !expanded}) {
+                                IconButton(onClick = {}) {
                                     Icon(
                                         icon,
                                         contentDescription = null
