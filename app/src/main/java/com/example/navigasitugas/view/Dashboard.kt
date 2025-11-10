@@ -98,7 +98,8 @@ fun GlassCard(
         ),
         elevation = CardDefaults.cardElevation(
             defaultElevation = 0.dp
-        )
+        ),
+        shape = RoundedCornerShape(16.dp)
     ) {
         Column(
             modifier = Modifier.padding(16.dp),
@@ -303,6 +304,7 @@ fun Dashboard(
                 ) {
                     items(items) { item ->
                         GlassCard(
+
                             modifier = Modifier
                                 .padding(vertical = 8.dp)
                         )
