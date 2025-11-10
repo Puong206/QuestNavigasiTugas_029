@@ -205,7 +205,7 @@ fun Formulir(
                                 ),
                                 modifier = Modifier
                                     .border(width = 2.dp,
-                                        color = colorResource(id = R.color.white),
+                                        color = if (isLoading) Color.Transparent else colorResource(id = R.color.white),
                                         shape = RoundedCornerShape(12.dp))
                                     .fillMaxWidth()
                                     .shimmerLoading(isLoading)
@@ -225,7 +225,9 @@ fun Formulir(
                             Row {
                                 jenis.forEach { item ->
                                     Row(
-                                        modifier = Modifier.selectable(
+                                        modifier = Modifier
+                                            .shimmerLoading(isLoading)
+                                            .selectable(
                                             selected = txtGender == item,
                                             onClick = { txtGender = item }
                                         ), verticalAlignment = Alignment.CenterVertically) {
@@ -233,13 +235,14 @@ fun Formulir(
                                             selected = txtGender == item,
                                             onClick = { txtGender = item },
                                             colors = RadioButtonDefaults.colors(
-                                                selectedColor = colorResource(R.color.white),
-                                                unselectedColor = colorResource(R.color.white)
+                                                selectedColor = if (isLoading) Color.Transparent else colorResource(R.color.white),
+                                                unselectedColor = if (isLoading) Color.Transparent else colorResource(R.color.white)
                                             ),
                                             modifier = Modifier
                                                 .width(12.dp)
                                                 .height(12.dp)
                                                 .padding(start = 8.dp)
+                                                .shimmerLoading(isLoading)
                                         )
                                         Spacer(modifier = Modifier.width(12.dp))
                                         Text(
@@ -289,11 +292,15 @@ fun Formulir(
                                     ),
                                     modifier = Modifier
                                         .fillMaxWidth()
+                                        .shimmerLoading(isLoading)
                                         .border(width = 2.dp,
-                                            color = colorResource(id = R.color.white),
+                                            color = if (isLoading) Color.Transparent else colorResource(id = R.color.white),
                                             shape = RoundedCornerShape(12.dp))
                                         .menuAnchor(),
-                                    label = { Text("Pilih Status") },
+                                    label = { Text("Pilih Status",
+                                        modifier = Modifier
+                                            .shimmerLoading(isLoading),
+                                        color = if (isLoading) Color.Transparent else colorResource(R.color.white)) },
                                     trailingIcon = {
                                         IconButton(onClick = {}) {
                                             Icon(
@@ -347,8 +354,9 @@ fun Formulir(
                                 ),
                                 modifier = Modifier
                                     .fillMaxWidth()
+                                    .shimmerLoading(isLoading)
                                     .border(width = 2.dp,
-                                        color = colorResource(id = R.color.white),
+                                        color = if (isLoading) Color.Transparent else colorResource(id = R.color.white),
                                         shape = RoundedCornerShape(12.dp)),
                                 shape = RoundedCornerShape(12.dp)
                             )
