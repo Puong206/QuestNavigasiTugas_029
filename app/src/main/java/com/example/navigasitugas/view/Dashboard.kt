@@ -121,7 +121,7 @@ fun Modifier.shimmerLoading(
         animationSpec = infiniteRepeatable(
             tween(
                 durationMillis = durationMillis,
-                easing = LinearOutSlowInEasing,
+                easing = LinearEasing,
                 ),
             repeatMode = RepeatMode.Restart
         ),
@@ -180,8 +180,6 @@ fun Dashboard(
             alamat = "Tasikmalaya"
         )
     )
-//    val interactionSource = remember { MutableInteractionSource() }
-//    val press by interactionSource.collectIsPressedAsState()
     var isLoading by remember { mutableStateOf(true) }
     LaunchedEffect(key1 = true) {
         delay(2000)
