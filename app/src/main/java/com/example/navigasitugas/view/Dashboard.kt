@@ -3,7 +3,6 @@ package com.example.navigasitugas.view
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.hoverable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Column
@@ -195,8 +194,7 @@ fun Dashboard(
                             )
                                     ),
                             modifier = Modifier
-                                .width(160.dp)
-                                .hoverable(interactionSource = interactionSource),
+                                .width(160.dp),
                             onClick = onExitButtonClick,
                         ) {
                             Text(
@@ -218,7 +216,6 @@ fun Dashboard(
                                     ),
                             modifier = Modifier
                                 .width(160.dp),
-                            //.hoverable(interactionSource = hover),
                             onClick = onFormButtonClick
                         ) {
                             Text(
@@ -236,7 +233,6 @@ fun Dashboard(
                 modifier = Modifier
                     .padding(frame)
                     .fillMaxSize(),
-                //.navigationBarsPadding(),
                 contentPadding = PaddingValues(start = 16.dp, end = 16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -248,7 +244,7 @@ fun Dashboard(
                     {
                         Row(
                             modifier = Modifier
-                                .padding(top = 12.dp, start = 16.dp, end = 20.dp)
+                                .padding(top = 8.dp, start = 8.dp, end = 8.dp)
                                 .fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceBetween
                         )
@@ -289,7 +285,7 @@ fun Dashboard(
                         Spacer(modifier = Modifier.height(12.dp))
                         Row(
                             modifier = Modifier
-                                .padding(start = 16.dp, end = 20.dp, bottom = 12.dp)
+                                .padding(start = 8.dp, end = 8.dp, bottom = 8.dp)
                                 .fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceBetween
                         )
