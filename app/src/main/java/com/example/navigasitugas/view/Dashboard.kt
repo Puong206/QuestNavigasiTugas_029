@@ -47,6 +47,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.blur
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
@@ -127,7 +128,9 @@ fun Modifier.shimmerLoading(
         ),
     )
 
-    return@composed drawBehind {
+    return@composed this
+        .clip(RoundedCornerShape(24.dp))
+        .drawBehind {
         drawRect(
             brush = Brush.linearGradient(
                 colors = listOf(
