@@ -72,7 +72,7 @@ fun GlassCard(
                 width = 2.dp,
                 brush = Brush.linearGradient(
                     colors = listOf(
-                        Color.White.copy(0.25f),
+                        Color.White.copy(0.2f),
                         Color.White.copy(0.1f)
                     )
                 ),
@@ -228,16 +228,11 @@ fun Dashboard(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 items(items) { item ->
-                    ElevatedCard(
-                        elevation = CardDefaults.cardElevation(
-                            defaultElevation = 8.dp
-                        ),
+                    GlassCard(
                         modifier = Modifier
-                            .padding(vertical = 8.dp),
-                        colors = CardDefaults.cardColors(
-                            colorResource(R.color.white)
-                        )
-                    ) {
+                            .padding(vertical = 8.dp)
+                    )
+                    {
                         Row(
                             modifier = Modifier
                                 .padding(top = 12.dp, start = 16.dp, end = 20.dp)
