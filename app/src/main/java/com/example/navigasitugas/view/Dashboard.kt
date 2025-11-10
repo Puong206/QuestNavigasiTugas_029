@@ -1,7 +1,6 @@
 package com.example.navigasitugas.view
 
 import androidx.compose.animation.core.LinearEasing
-import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
@@ -46,13 +45,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.blur
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.graphics.TileMode
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -108,9 +104,9 @@ fun GlassCard(
 }
 
 fun Modifier.shimmerLoading(
-    durationMillis: Int = 1500,
+    durationMillis: Int = 1000,
 ): Modifier = composed {
-    val transition = rememberInfiniteTransition()
+    val transition = rememberInfiniteTransition(label = "")
 
     val translateAnimation by transition.animateFloat(
         initialValue = 0f,
@@ -118,23 +114,25 @@ fun Modifier.shimmerLoading(
         animationSpec = infiniteRepeatable(
             tween(
                 durationMillis = durationMillis,
-                easing = LinearEasing),
+                easing = LinearEasing,),
             repeatMode = RepeatMode.Restart
         ),
         label = "",
     )
 
-    return@composed background(
-        brush = Brush.linearGradient(
-            colors = listOf(
-                Color.LightGray.copy(alpha = 0.2f),
-                Color.LightGray.copy(alpha = 1.0f),
-                Color.LightGray.copy(alpha = 0.2f),
-            ),
-            start = Offset(x = translateAnimation, y = translateAnimation),
-            end = Offset(x = translateAnimation + 100f, y = translateAnimation + 100f)
+    return@composed drawBehind {
+        drawRect(
+            brush = Brush.linearGradient(
+                colors = listOf(
+                    Color.LightGray.copy(alpha = 0.2f),
+                    Color.LightGray.copy(alpha = 1.0f),
+                    Color.LightGray.copy(alpha = 0.2f),
+                ),
+                start = Offset(x = translateAnimation, y = translateAnimation),
+                end = Offset(x = translateAnimation + 100f, y = translateAnimation + 100f)
+            )
         )
-    )
+    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
