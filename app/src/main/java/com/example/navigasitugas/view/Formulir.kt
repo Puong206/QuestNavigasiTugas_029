@@ -34,16 +34,19 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -80,8 +83,11 @@ fun Formulir(
     }
 
     var showDialog by remember { mutableStateOf(false) }
-
-
+    var isLoading by remember { mutableStateOf(true) }
+    LaunchedEffect(key1 = true) {
+        delay(2000)
+        isLoading = false
+    }
 
     if (showDialog) {
         AlertDialog(
@@ -148,7 +154,8 @@ fun Formulir(
                 fontFamily = PlusJakartaSans,
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
-                color = colorResource(R.color.white)
+                color = if (isLoading) Color.Transparent else colorResource(R.color.white),
+                modifier = Modifier.shimmerLoading(isLoading)
             )
             GlassCard(
                 modifier = Modifier
@@ -173,7 +180,8 @@ fun Formulir(
                                 fontFamily = PlusJakartaSans,
                                 fontSize = 16.sp,
                                 fontWeight = FontWeight.SemiBold,
-                                color = colorResource(R.color.white)
+                                color = if (isLoading) Color.Transparent else colorResource(R.color.white),
+                                modifier = Modifier.shimmerLoading(isLoading)
                             )
                             Spacer(modifier = Modifier.height(8.dp))
                             TextField(
@@ -191,7 +199,8 @@ fun Formulir(
                                 fontFamily = PlusJakartaSans,
                                 fontSize = 16.sp,
                                 fontWeight = FontWeight.SemiBold,
-                                color = colorResource(R.color.white)
+                                color = if (isLoading) Color.Transparent else colorResource(R.color.white),
+                                modifier = Modifier.shimmerLoading(isLoading)
                             )
                             Spacer(modifier = Modifier.height(4.dp))
                             Row {
@@ -219,7 +228,8 @@ fun Formulir(
                                             fontFamily = PlusJakartaSans,
                                             fontWeight = FontWeight.Medium,
                                             fontSize = 14.sp,
-                                            color = colorResource(R.color.white)
+                                            color = if (isLoading) Color.Transparent else colorResource(R.color.white),
+                                            modifier = Modifier.shimmerLoading(isLoading)
                                         )
                                         Spacer(modifier = Modifier.width(20.dp))
                                     }
@@ -233,7 +243,8 @@ fun Formulir(
                                 fontFamily = PlusJakartaSans,
                                 fontWeight = FontWeight.SemiBold,
                                 fontSize = 16.sp,
-                                color = colorResource(R.color.white)
+                                color = if (isLoading) Color.Transparent else colorResource(R.color.white),
+                                modifier = Modifier.shimmerLoading(isLoading)
                             )
                             Spacer(modifier = Modifier.height(4.dp))
                             ExposedDropdownMenuBox(
@@ -283,7 +294,8 @@ fun Formulir(
                                 fontFamily = PlusJakartaSans,
                                 fontWeight = FontWeight.SemiBold,
                                 fontSize = 16.sp,
-                                color = colorResource(R.color.white)
+                                color = if (isLoading) Color.Transparent else colorResource(R.color.white),
+                                modifier = Modifier.shimmerLoading(isLoading)
                             )
                             Spacer(modifier = Modifier.height(4.dp))
                             TextField(
