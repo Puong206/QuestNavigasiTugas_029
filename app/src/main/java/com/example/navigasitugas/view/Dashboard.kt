@@ -304,14 +304,16 @@ fun Dashboard(
                                         fontSize = 16.sp,
                                         fontFamily = PlusJakartaSans,
                                         fontWeight = FontWeight.Bold,
-                                        color = colorResource(R.color.white)
+                                        color = colorResource(R.color.white),
+                                        modifier = Modifier.shimmerBackground(RoundedCornerShape(8.dp))
                                     )
                                     Text(
                                         item.nama,
                                         fontSize = 16.sp,
                                         fontFamily = PlusJakartaSans,
                                         fontWeight = FontWeight.Normal,
-                                        color = colorResource(R.color.white)
+                                        color = colorResource(R.color.white),
+                                        modifier = Modifier.shimmerBackground(RoundedCornerShape(8.dp))
                                     )
                                 }
                                 Column {
@@ -320,14 +322,16 @@ fun Dashboard(
                                         fontSize = 16.sp,
                                         fontFamily = PlusJakartaSans,
                                         fontWeight = FontWeight.Bold,
-                                        color = colorResource(R.color.white)
+                                        color = colorResource(R.color.white),
+                                        modifier = Modifier.shimmerBackground(RoundedCornerShape(8.dp))
                                     )
                                     Text(
                                         item.gender,
                                         fontSize = 16.sp,
                                         fontFamily = PlusJakartaSans,
                                         fontWeight = FontWeight.Normal,
-                                        color = colorResource(R.color.white)
+                                        color = colorResource(R.color.white),
+                                        modifier = Modifier.shimmerBackground(RoundedCornerShape(8.dp))
                                     )
                                 }
                             }
@@ -346,14 +350,17 @@ fun Dashboard(
                                         fontFamily = PlusJakartaSans,
                                         fontWeight = FontWeight.Bold,
                                         color = colorResource(R.color.white),
-                                        modifier = Modifier.width(120.dp)
+                                        modifier = Modifier
+                                            .width(120.dp)
+                                            .shimmerBackground(RoundedCornerShape(8.dp))
                                     )
                                     Text(
                                         item.status,
                                         fontSize = 16.sp,
                                         fontFamily = PlusJakartaSans,
                                         fontWeight = FontWeight.Normal,
-                                        color = colorResource(R.color.white)
+                                        color = colorResource(R.color.white),
+                                        modifier = Modifier.shimmerBackground(RoundedCornerShape(8.dp))
                                     )
                                 }
                                 Column {
@@ -364,13 +371,15 @@ fun Dashboard(
                                         fontWeight = FontWeight.Bold,
                                         color = colorResource(R.color.white),
                                         modifier = Modifier.width(120.dp)
+                                            .shimmerBackground(RoundedCornerShape(8.dp))
                                     )
                                     Text(
                                         item.alamat,
                                         fontSize = 16.sp,
                                         fontFamily = PlusJakartaSans,
                                         fontWeight = FontWeight.Normal,
-                                        color = colorResource(R.color.white)
+                                        color = colorResource(R.color.white),
+                                        modifier = Modifier.shimmerBackground(RoundedCornerShape(8.dp))
                                     )
                                 }
                             }
