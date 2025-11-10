@@ -87,7 +87,6 @@ fun GlassCard(
     val cornerRadius = 16.dp
     Card(
         modifier = modifier
-            .clip(RoundedCornerShape(8.dp))
             .background(glassBrush)
             .border(
                 width = 2.dp,
@@ -108,29 +107,33 @@ fun GlassCard(
     }
 }
 
-fun Modifier.shimmerBackground(shape: Shape = RectangleShape): Modifier = composed {
+fun Modifier.shimmerLoading(
+    durationMillis: Int = 1500,
+): Modifier = composed {
     val transition = rememberInfiniteTransition()
 
     val translateAnimation by transition.animateFloat(
         initialValue = 0f,
-        targetValue = 400f,
+        targetValue = 500f,
         animationSpec = infiniteRepeatable(
-            tween(durationMillis = 1500, easing = LinearOutSlowInEasing),
-            RepeatMode.Restart
+            tween(
+                durationMillis = durationMillis,
+                easing = LinearEasing),
+            repeatMode = RepeatMode.Restart
         ),
+        label = "",
     )
-    val shimmerColors = listOf(
-        Color.LightGray.copy(alpha = 0.9f),
-        Color.LightGray.copy(alpha = 0.4f),
-    )
-    val brush = Brush.linearGradient(
-        colors = shimmerColors,
-        start = Offset(translateAnimation, translateAnimation),
-        end = Offset(translateAnimation + 100f, translateAnimation + 100f),
-        tileMode = TileMode.Mirror,
-    )
-    return@composed this.then(
-        Modifier.background(brush, shape)
+
+    return@composed background(
+        brush = Brush.linearGradient(
+            colors = listOf(
+                Color.LightGray.copy(alpha = 0.2f),
+                Color.LightGray.copy(alpha = 1.0f),
+                Color.LightGray.copy(alpha = 0.2f),
+            ),
+            start = Offset(x = translateAnimation, y = translateAnimation),
+            end = Offset(x = translateAnimation + 100f, y = translateAnimation + 100f)
+        )
     )
 }
 
@@ -195,7 +198,9 @@ fun Dashboard(
                                 fontFamily = PlusJakartaSans,
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 24.sp,
-                                modifier = Modifier.padding(top = 20.dp,bottom = 20.dp)
+                                modifier = Modifier
+                                    .padding(top = 20.dp,bottom = 20.dp)
+                                    .shimmerLoading()
                             )
                         }
                     },
@@ -305,7 +310,7 @@ fun Dashboard(
                                         fontFamily = PlusJakartaSans,
                                         fontWeight = FontWeight.Bold,
                                         color = colorResource(R.color.white),
-                                        modifier = Modifier.shimmerBackground(RoundedCornerShape(8.dp))
+                                        modifier = Modifier.shimmerLoading()
                                     )
                                     Text(
                                         item.nama,
@@ -313,7 +318,7 @@ fun Dashboard(
                                         fontFamily = PlusJakartaSans,
                                         fontWeight = FontWeight.Normal,
                                         color = colorResource(R.color.white),
-                                        modifier = Modifier.shimmerBackground(RoundedCornerShape(8.dp))
+                                        modifier = Modifier.shimmerLoading()
                                     )
                                 }
                                 Column {
@@ -323,7 +328,7 @@ fun Dashboard(
                                         fontFamily = PlusJakartaSans,
                                         fontWeight = FontWeight.Bold,
                                         color = colorResource(R.color.white),
-                                        modifier = Modifier.shimmerBackground(RoundedCornerShape(8.dp))
+                                        modifier = Modifier.shimmerLoading()
                                     )
                                     Text(
                                         item.gender,
@@ -331,7 +336,7 @@ fun Dashboard(
                                         fontFamily = PlusJakartaSans,
                                         fontWeight = FontWeight.Normal,
                                         color = colorResource(R.color.white),
-                                        modifier = Modifier.shimmerBackground(RoundedCornerShape(8.dp))
+                                        modifier = Modifier.shimmerLoading()
                                     )
                                 }
                             }
@@ -352,7 +357,7 @@ fun Dashboard(
                                         color = colorResource(R.color.white),
                                         modifier = Modifier
                                             .width(120.dp)
-                                            .shimmerBackground(RoundedCornerShape(8.dp))
+                                            .shimmerLoading()
                                     )
                                     Text(
                                         item.status,
@@ -360,7 +365,7 @@ fun Dashboard(
                                         fontFamily = PlusJakartaSans,
                                         fontWeight = FontWeight.Normal,
                                         color = colorResource(R.color.white),
-                                        modifier = Modifier.shimmerBackground(RoundedCornerShape(8.dp))
+                                        modifier = Modifier.shimmerLoading()
                                     )
                                 }
                                 Column {
@@ -371,7 +376,7 @@ fun Dashboard(
                                         fontWeight = FontWeight.Bold,
                                         color = colorResource(R.color.white),
                                         modifier = Modifier.width(120.dp)
-                                            .shimmerBackground(RoundedCornerShape(8.dp))
+                                            .shimmerLoading()
                                     )
                                     Text(
                                         item.alamat,
@@ -379,7 +384,7 @@ fun Dashboard(
                                         fontFamily = PlusJakartaSans,
                                         fontWeight = FontWeight.Normal,
                                         color = colorResource(R.color.white),
-                                        modifier = Modifier.shimmerBackground(RoundedCornerShape(8.dp))
+                                        modifier = Modifier.shimmerLoading()
                                     )
                                 }
                             }
