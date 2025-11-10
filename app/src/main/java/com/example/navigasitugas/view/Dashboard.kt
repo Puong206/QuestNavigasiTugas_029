@@ -204,7 +204,6 @@ fun Dashboard(
                         {
                             Text(
                                 "List Daftar Peserta",
-                                //color = colorResource(R.color.orange),
                                 color = if (isLoading) Color.Transparent else colorResource(R.color.orange),
                                 fontFamily = PlusJakartaSans,
                                 fontWeight = FontWeight.Bold,
@@ -232,11 +231,17 @@ fun Dashboard(
                     )
                     {
                         ElevatedButton(
-                            colors = ButtonDefaults.buttonColors(
+                            colors = (if (isLoading) ButtonDefaults.buttonColors(
+                                containerColor = Color.Transparent,
+                                contentColor = Color.Transparent
+                            )
+                            else ButtonDefaults.buttonColors(
                                 containerColor = colorResource(id = R.color.orange),
-                                contentColor = colorResource(id = R.color.white)),
+                                contentColor = colorResource(id = R.color.white)
+                            )),
                             modifier = Modifier
-                                .width(160.dp),
+                                .width(160.dp)
+                                .shimmerLoading(isLoading),
                             onClick = onExitButtonClick,
                         ) {
                             Text(
@@ -247,11 +252,17 @@ fun Dashboard(
                             )
                         }
                         ElevatedButton(
-                            colors = ButtonDefaults.buttonColors(
+                            colors = (if (isLoading) ButtonDefaults.buttonColors(
+                                containerColor = Color.Transparent,
+                                contentColor = Color.Transparent
+                            )
+                            else ButtonDefaults.buttonColors(
                                 containerColor = colorResource(id = R.color.orange),
-                                contentColor = colorResource(id = R.color.white)),
+                                contentColor = colorResource(id = R.color.white)
+                            )),
                             modifier = Modifier
-                                .width(160.dp),
+                                .width(160.dp)
+                                .shimmerLoading(isLoading),
                             onClick = onFormButtonClick
                         ) {
                             Text(
