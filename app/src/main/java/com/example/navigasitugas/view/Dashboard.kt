@@ -209,7 +209,7 @@ fun Dashboard(
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 24.sp,
                                 modifier = Modifier
-                                    .padding(top = 20.dp,bottom = 20.dp)
+                                    .padding(top = 20.dp,bottom = 12.dp)
                                     .shimmerLoading(isLoading)
                             )
                         }
