@@ -158,15 +158,11 @@ fun Formulir(
                 fontWeight = FontWeight.Bold,
                 color = colorResource(R.color.white)
             )
-            ElevatedCard(
+            GlassCard(
                 modifier = Modifier
                     .padding(top = 12.dp, start = 24.dp, end = 24.dp, bottom = 80.dp)
                     .fillMaxSize()
-                    .align(Alignment.CenterHorizontally),
-                elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
-                colors = CardDefaults.cardColors(
-                    colorResource(R.color.white)
-                )
+                    .align(Alignment.CenterHorizontally)
             ) {
                 Column(
                     modifier = Modifier.fillMaxSize(),
@@ -185,7 +181,7 @@ fun Formulir(
                                 fontFamily = PlusJakartaSans,
                                 fontSize = 16.sp,
                                 fontWeight = FontWeight.SemiBold,
-                                color = colorResource(R.color.blue)
+                                color = colorResource(R.color.white)
                             )
                             Spacer(modifier = Modifier.height(8.dp))
                             TextField(
@@ -203,7 +199,7 @@ fun Formulir(
                                 fontFamily = PlusJakartaSans,
                                 fontSize = 16.sp,
                                 fontWeight = FontWeight.SemiBold,
-                                color = colorResource(R.color.blue)
+                                color = colorResource(R.color.white)
                             )
                             Spacer(modifier = Modifier.height(4.dp))
                             Row {
@@ -217,8 +213,8 @@ fun Formulir(
                                             selected = txtGender == item,
                                             onClick = { txtGender = item },
                                             colors = RadioButtonDefaults.colors(
-                                                selectedColor = colorResource(R.color.blue),
-                                                unselectedColor = colorResource(R.color.blue)
+                                                selectedColor = colorResource(R.color.white),
+                                                unselectedColor = colorResource(R.color.white)
                                             ),
                                             modifier = Modifier
                                                 .width(12.dp)
@@ -231,7 +227,7 @@ fun Formulir(
                                             fontFamily = PlusJakartaSans,
                                             fontWeight = FontWeight.Medium,
                                             fontSize = 14.sp,
-                                            color = colorResource(R.color.blue)
+                                            color = colorResource(R.color.white)
                                         )
                                         Spacer(modifier = Modifier.width(20.dp))
                                     }
@@ -245,7 +241,7 @@ fun Formulir(
                                 fontFamily = PlusJakartaSans,
                                 fontWeight = FontWeight.SemiBold,
                                 fontSize = 16.sp,
-                                color = colorResource(R.color.blue)
+                                color = colorResource(R.color.white)
                             )
                             Spacer(modifier = Modifier.height(4.dp))
                             ExposedDropdownMenuBox(
@@ -295,7 +291,7 @@ fun Formulir(
                                 fontFamily = PlusJakartaSans,
                                 fontWeight = FontWeight.SemiBold,
                                 fontSize = 16.sp,
-                                color = colorResource(R.color.blue)
+                                color = colorResource(R.color.white)
                             )
                             Spacer(modifier = Modifier.height(4.dp))
                             TextField(
