@@ -1,6 +1,7 @@
 package com.example.navigasitugas.view
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import com.example.navigasitugas.R
 import androidx.compose.foundation.layout.Column
@@ -33,6 +34,8 @@ import androidx.compose.material3.RadioButtonDefaults
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldColors
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -189,7 +192,23 @@ fun Formulir(
                                 singleLine = true,
                                 onValueChange = { txtNama = it },
                                 shape = RoundedCornerShape(12.dp),
-                                modifier = Modifier.fillMaxWidth()
+                                colors = TextFieldDefaults.colors(
+                                    focusedTextColor = colorResource(id = R.color.white),
+                                    unfocusedTextColor = colorResource(id = R.color.white),
+                                    focusedContainerColor = colorResource(R.color.blue),
+                                    unfocusedContainerColor = Color.Transparent,
+                                    disabledContainerColor = Color.Transparent,
+                                    focusedIndicatorColor = Color.Transparent,
+                                    unfocusedIndicatorColor = Color.Transparent,
+                                    disabledIndicatorColor = Color.Transparent,
+                                    cursorColor = colorResource(id = R.color.white)
+                                ),
+                                modifier = Modifier
+                                    .border(width = 2.dp,
+                                        color = colorResource(id = R.color.white),
+                                        shape = RoundedCornerShape(12.dp))
+                                    .fillMaxWidth()
+                                    .shimmerLoading(isLoading)
                             )
                         }
                         Spacer(modifier = Modifier.height(12.dp))
@@ -257,8 +276,22 @@ fun Formulir(
                                     onValueChange = {},
                                     readOnly = true,
                                     shape = RoundedCornerShape(12.dp),
+                                    colors = TextFieldDefaults.colors(
+                                        focusedTextColor = colorResource(id = R.color.white),
+                                        unfocusedTextColor = colorResource(id = R.color.white),
+                                        focusedContainerColor = colorResource(R.color.blue),
+                                        unfocusedContainerColor = Color.Transparent,
+                                        disabledContainerColor = Color.Transparent,
+                                        focusedIndicatorColor = Color.Transparent,
+                                        unfocusedIndicatorColor = Color.Transparent,
+                                        disabledIndicatorColor = Color.Transparent,
+                                        cursorColor = colorResource(id = R.color.white)
+                                    ),
                                     modifier = Modifier
                                         .fillMaxWidth()
+                                        .border(width = 2.dp,
+                                            color = colorResource(id = R.color.white),
+                                            shape = RoundedCornerShape(12.dp))
                                         .menuAnchor(),
                                     label = { Text("Pilih Status") },
                                     trailingIcon = {
@@ -301,8 +334,22 @@ fun Formulir(
                             TextField(
                                 value = txtAlamat,
                                 onValueChange = { txtAlamat = it },
+                                colors = TextFieldDefaults.colors(
+                                    focusedTextColor = colorResource(id = R.color.white),
+                                    unfocusedTextColor = colorResource(id = R.color.white),
+                                    focusedContainerColor = colorResource(R.color.blue),
+                                    unfocusedContainerColor = Color.Transparent,
+                                    disabledContainerColor = Color.Transparent,
+                                    focusedIndicatorColor = Color.Transparent,
+                                    unfocusedIndicatorColor = Color.Transparent,
+                                    disabledIndicatorColor = Color.Transparent,
+                                    cursorColor = colorResource(id = R.color.white)
+                                ),
                                 modifier = Modifier
-                                    .fillMaxWidth(),
+                                    .fillMaxWidth()
+                                    .border(width = 2.dp,
+                                        color = colorResource(id = R.color.white),
+                                        shape = RoundedCornerShape(12.dp)),
                                 shape = RoundedCornerShape(12.dp)
                             )
                         }
