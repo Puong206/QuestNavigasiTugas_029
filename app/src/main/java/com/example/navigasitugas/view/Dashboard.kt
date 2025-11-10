@@ -9,8 +9,6 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
@@ -39,7 +37,10 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -55,6 +56,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import kotlinx.coroutines.delay
 
 data class CardData(
     val nama: String,
@@ -104,8 +106,12 @@ fun GlassCard(
 }
 
 fun Modifier.shimmerLoading(
+    isLoading: Boolean,
     durationMillis: Int = 1000,
 ): Modifier = composed {
+    if (!isLoading) {
+        return@composed this
+    }
     val transition = rememberInfiniteTransition(label = "")
 
     val translateAnimation by transition.animateFloat(
@@ -114,7 +120,8 @@ fun Modifier.shimmerLoading(
         animationSpec = infiniteRepeatable(
             tween(
                 durationMillis = durationMillis,
-                easing = LinearEasing,),
+                easing = LinearEasing,
+                ),
             repeatMode = RepeatMode.Restart
         ),
         label = "",
@@ -173,8 +180,13 @@ fun Dashboard(
             alamat = "Tasikmalaya"
         )
     )
-    val interactionSource = remember { MutableInteractionSource() }
-    val press by interactionSource.collectIsPressedAsState()
+//    val interactionSource = remember { MutableInteractionSource() }
+//    val press by interactionSource.collectIsPressedAsState()
+    var isLoading by remember { mutableStateOf(true) }
+    LaunchedEffect(key1 = true) {
+        delay(2000)
+        isLoading = false
+    }
 
     val logo = painterResource(id = R.drawable.listdata)
 
@@ -198,7 +210,7 @@ fun Dashboard(
                                 fontSize = 24.sp,
                                 modifier = Modifier
                                     .padding(top = 20.dp,bottom = 20.dp)
-                                    .shimmerLoading()
+                                    .shimmerLoading(isLoading)
                             )
                         }
                     },
@@ -308,7 +320,7 @@ fun Dashboard(
                                         fontFamily = PlusJakartaSans,
                                         fontWeight = FontWeight.Bold,
                                         color = colorResource(R.color.white),
-                                        modifier = Modifier.shimmerLoading()
+                                        modifier = Modifier.shimmerLoading(isLoading)
                                     )
                                     Text(
                                         item.nama,
@@ -316,7 +328,7 @@ fun Dashboard(
                                         fontFamily = PlusJakartaSans,
                                         fontWeight = FontWeight.Normal,
                                         color = colorResource(R.color.white),
-                                        modifier = Modifier.shimmerLoading()
+                                        modifier = Modifier.shimmerLoading(isLoading)
                                     )
                                 }
                                 Column {
@@ -326,7 +338,7 @@ fun Dashboard(
                                         fontFamily = PlusJakartaSans,
                                         fontWeight = FontWeight.Bold,
                                         color = colorResource(R.color.white),
-                                        modifier = Modifier.shimmerLoading()
+                                        modifier = Modifier.shimmerLoading(isLoading)
                                     )
                                     Text(
                                         item.gender,
@@ -334,7 +346,7 @@ fun Dashboard(
                                         fontFamily = PlusJakartaSans,
                                         fontWeight = FontWeight.Normal,
                                         color = colorResource(R.color.white),
-                                        modifier = Modifier.shimmerLoading()
+                                        modifier = Modifier.shimmerLoading(isLoading)
                                     )
                                 }
                             }
@@ -355,7 +367,7 @@ fun Dashboard(
                                         color = colorResource(R.color.white),
                                         modifier = Modifier
                                             .width(120.dp)
-                                            .shimmerLoading()
+                                            .shimmerLoading(isLoading)
                                     )
                                     Text(
                                         item.status,
@@ -363,7 +375,7 @@ fun Dashboard(
                                         fontFamily = PlusJakartaSans,
                                         fontWeight = FontWeight.Normal,
                                         color = colorResource(R.color.white),
-                                        modifier = Modifier.shimmerLoading()
+                                        modifier = Modifier.shimmerLoading(isLoading)
                                     )
                                 }
                                 Column {
@@ -374,7 +386,7 @@ fun Dashboard(
                                         fontWeight = FontWeight.Bold,
                                         color = colorResource(R.color.white),
                                         modifier = Modifier.width(120.dp)
-                                            .shimmerLoading()
+                                            .shimmerLoading(isLoading)
                                     )
                                     Text(
                                         item.alamat,
@@ -382,7 +394,7 @@ fun Dashboard(
                                         fontFamily = PlusJakartaSans,
                                         fontWeight = FontWeight.Normal,
                                         color = colorResource(R.color.white),
-                                        modifier = Modifier.shimmerLoading()
+                                        modifier = Modifier.shimmerLoading(isLoading)
                                     )
                                 }
                             }
