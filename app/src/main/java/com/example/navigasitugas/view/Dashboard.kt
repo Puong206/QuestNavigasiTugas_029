@@ -204,7 +204,8 @@ fun Dashboard(
                         {
                             Text(
                                 "List Daftar Peserta",
-                                color = colorResource(R.color.orange),
+                                //color = colorResource(R.color.orange),
+                                color = if (isLoading) Color.Transparent else colorResource(R.color.orange),
                                 fontFamily = PlusJakartaSans,
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 24.sp,
@@ -307,7 +308,7 @@ fun Dashboard(
                                         fontSize = 16.sp,
                                         fontFamily = PlusJakartaSans,
                                         fontWeight = FontWeight.Bold,
-                                        color = colorResource(R.color.white),
+                                        color = if (isLoading) Color.Transparent else colorResource(R.color.white),
                                         modifier = Modifier.shimmerLoading(isLoading)
                                     )
                                     Text(
@@ -315,7 +316,7 @@ fun Dashboard(
                                         fontSize = 16.sp,
                                         fontFamily = PlusJakartaSans,
                                         fontWeight = FontWeight.Normal,
-                                        color = colorResource(R.color.white),
+                                        color = if (isLoading) Color.Transparent else colorResource(R.color.white),
                                         modifier = Modifier.shimmerLoading(isLoading)
                                     )
                                 }
@@ -325,7 +326,7 @@ fun Dashboard(
                                         fontSize = 16.sp,
                                         fontFamily = PlusJakartaSans,
                                         fontWeight = FontWeight.Bold,
-                                        color = colorResource(R.color.white),
+                                        color = if (isLoading) Color.Transparent else colorResource(R.color.white),
                                         modifier = Modifier.shimmerLoading(isLoading)
                                     )
                                     Text(
@@ -333,7 +334,7 @@ fun Dashboard(
                                         fontSize = 16.sp,
                                         fontFamily = PlusJakartaSans,
                                         fontWeight = FontWeight.Normal,
-                                        color = colorResource(R.color.white),
+                                        color = if (isLoading) Color.Transparent else colorResource(R.color.white),
                                         modifier = Modifier.shimmerLoading(isLoading)
                                     )
                                 }
@@ -352,7 +353,7 @@ fun Dashboard(
                                         fontSize = 16.sp,
                                         fontFamily = PlusJakartaSans,
                                         fontWeight = FontWeight.Bold,
-                                        color = colorResource(R.color.white),
+                                        color = if (isLoading) Color.Transparent else colorResource(R.color.white),
                                         modifier = Modifier
                                             .width(120.dp)
                                             .shimmerLoading(isLoading)
@@ -362,7 +363,7 @@ fun Dashboard(
                                         fontSize = 16.sp,
                                         fontFamily = PlusJakartaSans,
                                         fontWeight = FontWeight.Normal,
-                                        color = colorResource(R.color.white),
+                                        color = if (isLoading) Color.Transparent else colorResource(R.color.white),
                                         modifier = Modifier.shimmerLoading(isLoading)
                                     )
                                 }
@@ -372,7 +373,7 @@ fun Dashboard(
                                         fontSize = 16.sp,
                                         fontFamily = PlusJakartaSans,
                                         fontWeight = FontWeight.Bold,
-                                        color = colorResource(R.color.white),
+                                        color = if (isLoading) Color.Transparent else colorResource(R.color.white),
                                         modifier = Modifier.width(120.dp)
                                             .shimmerLoading(isLoading)
                                     )
@@ -381,7 +382,7 @@ fun Dashboard(
                                         fontSize = 16.sp,
                                         fontFamily = PlusJakartaSans,
                                         fontWeight = FontWeight.Normal,
-                                        color = colorResource(R.color.white),
+                                        color = if (isLoading) Color.Transparent else colorResource(R.color.white),
                                         modifier = Modifier.shimmerLoading(isLoading)
                                     )
                                 }
