@@ -1,6 +1,7 @@
 package com.example.navigasitugas.view
 
 import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
@@ -120,11 +121,10 @@ fun Modifier.shimmerLoading(
         animationSpec = infiniteRepeatable(
             tween(
                 durationMillis = durationMillis,
-                easing = LinearEasing,
+                easing = LinearOutSlowInEasing,
                 ),
             repeatMode = RepeatMode.Restart
         ),
-        label = "",
     )
 
     return@composed drawBehind {
