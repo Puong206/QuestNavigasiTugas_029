@@ -1,5 +1,6 @@
 package com.example.navigasitugas.view
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.hoverable
@@ -19,9 +20,9 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -31,7 +32,6 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedButton
-import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -41,7 +41,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -58,25 +60,27 @@ fun GlassCard(
     modifier: Modifier = Modifier,
     content: @Composable ColumnScope.() -> Unit
 ){
-    val glassBrush = Brush.linearGradient(
+    val glassBrush = Brush.radialGradient(
         colors = listOf(
-            Color.White.copy(0.25f),
-            Color.White.copy(0.1f)
+            Color.White.copy(0.2f),
+            Color.White.copy(0.05f)
         )
     )
+    val glassBorder = Brush.linearGradient(
+        colors = listOf(
+            Color.White.copy(0.6f),
+            Color.White.copy(0.2f)
+        )
+    )
+    val cornerRadius = 16.dp
     Card(
         modifier = modifier
             .clip(RoundedCornerShape(8.dp))
             .background(glassBrush)
             .border(
                 width = 2.dp,
-                brush = Brush.linearGradient(
-                    colors = listOf(
-                        Color.White.copy(0.2f),
-                        Color.White.copy(0.1f)
-                    )
-                ),
-                shape = RoundedCornerShape(24.dp)
+                brush = glassBorder,
+                shape = RoundedCornerShape(cornerRadius)
             ),
         colors = CardDefaults.cardColors(
             containerColor = Color.Transparent
@@ -133,8 +137,17 @@ fun Dashboard(
     val interactionSource = remember { MutableInteractionSource() }
     val press by interactionSource.collectIsPressedAsState()
 
+    val logo = painterResource(id = R.drawable.listdata)
+
     Box(modifier = Modifier.fillMaxSize())
     {
+        Image(painter = logo,
+            contentScale = ContentScale.Fit,
+            contentDescription = null,
+            modifier = Modifier
+                .size(400.dp)
+                .align(Alignment.Center)
+        )
         Scaffold(
             containerColor = colorResource(R.color.blue),
             topBar = {
@@ -246,14 +259,14 @@ fun Dashboard(
                                     fontSize = 16.sp,
                                     fontFamily = PlusJakartaSans,
                                     fontWeight = FontWeight.Bold,
-                                    color = colorResource(R.color.blue)
+                                    color = colorResource(R.color.white)
                                 )
                                 Text(
                                     item.nama,
                                     fontSize = 16.sp,
                                     fontFamily = PlusJakartaSans,
                                     fontWeight = FontWeight.Normal,
-                                    color = colorResource(R.color.blue)
+                                    color = colorResource(R.color.white)
                                 )
                             }
                             Column {
@@ -262,14 +275,14 @@ fun Dashboard(
                                     fontSize = 16.sp,
                                     fontFamily = PlusJakartaSans,
                                     fontWeight = FontWeight.Bold,
-                                    color = colorResource(R.color.blue)
+                                    color = colorResource(R.color.white)
                                 )
                                 Text(
                                     item.gender,
                                     fontSize = 16.sp,
                                     fontFamily = PlusJakartaSans,
                                     fontWeight = FontWeight.Normal,
-                                    color = colorResource(R.color.blue)
+                                    color = colorResource(R.color.white)
                                 )
                             }
                         }
@@ -287,7 +300,7 @@ fun Dashboard(
                                     fontSize = 16.sp,
                                     fontFamily = PlusJakartaSans,
                                     fontWeight = FontWeight.Bold,
-                                    color = colorResource(R.color.blue),
+                                    color = colorResource(R.color.white),
                                     modifier = Modifier.width(120.dp)
                                 )
                                 Text(
@@ -295,7 +308,7 @@ fun Dashboard(
                                     fontSize = 16.sp,
                                     fontFamily = PlusJakartaSans,
                                     fontWeight = FontWeight.Normal,
-                                    color = colorResource(R.color.blue)
+                                    color = colorResource(R.color.white)
                                 )
                             }
                             Column {
@@ -304,7 +317,7 @@ fun Dashboard(
                                     fontSize = 16.sp,
                                     fontFamily = PlusJakartaSans,
                                     fontWeight = FontWeight.Bold,
-                                    color = colorResource(R.color.blue),
+                                    color = colorResource(R.color.white),
                                     modifier = Modifier.width(120.dp)
                                 )
                                 Text(
@@ -312,7 +325,7 @@ fun Dashboard(
                                     fontSize = 16.sp,
                                     fontFamily = PlusJakartaSans,
                                     fontWeight = FontWeight.Normal,
-                                    color = colorResource(R.color.blue)
+                                    color = colorResource(R.color.white)
                                 )
                             }
                         }
