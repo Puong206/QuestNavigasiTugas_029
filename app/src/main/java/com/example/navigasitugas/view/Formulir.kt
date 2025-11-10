@@ -47,6 +47,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -93,37 +94,47 @@ fun Formulir(
     if (showDialog) {
         AlertDialog(
             onDismissRequest = { showDialog = false },
+            containerColor = colorResource(R.color.white),
             icon = {Icon(Icons.Filled.TaskAlt,
                 null,
-                modifier = Modifier.size(64.dp))},
+                modifier = Modifier
+                    .size(64.dp),
+                tint = colorResource(R.color.orange),)},
             title = {
                 Column(modifier = Modifier.fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally) {
-                    Text(text = "Berhasil", fontFamily = PlusJakartaSans, fontWeight = FontWeight.Bold, fontSize = 24.sp)
-                    Text(text = "Data berhasil disimpan", fontFamily = PlusJakartaSans, fontWeight = FontWeight.Normal, fontSize = 16.sp)
+                    Text(text = "Berhasil", fontFamily = PlusJakartaSans, fontWeight = FontWeight.Bold, fontSize = 24.sp, color = colorResource(R.color.blue))
+                    Text(text = "Data berhasil disimpan", fontFamily = PlusJakartaSans, fontWeight = FontWeight.Normal, fontSize = 16.sp, color = colorResource(R.color.blue))
                 }
             },
             text = {
                 Column(modifier = Modifier.fillMaxWidth()) {
-                    Text(text = "Nama", fontFamily = PlusJakartaSans, fontWeight = FontWeight.Bold, fontSize = 16.sp)
-                    Text(text = nama, fontFamily = PlusJakartaSans, fontWeight = FontWeight.Medium, fontSize = 16.sp)
+                    Text(text = "Nama", fontFamily = PlusJakartaSans, fontWeight = FontWeight.Bold, fontSize = 16.sp, color = colorResource(R.color.blue))
+                    Text(text = nama, fontFamily = PlusJakartaSans, fontWeight = FontWeight.Medium, fontSize = 16.sp, color = colorResource(R.color.blue))
                     Spacer(modifier = Modifier.height(8.dp))
-                    Text(text = "Jenis Kelamin", fontFamily = PlusJakartaSans, fontWeight = FontWeight.Bold, fontSize = 16.sp)
-                    Text(text = gender, fontFamily = PlusJakartaSans, fontWeight = FontWeight.Medium, fontSize = 16.sp)
+                    Text(text = "Jenis Kelamin", fontFamily = PlusJakartaSans, fontWeight = FontWeight.Bold, fontSize = 16.sp, color = colorResource(R.color.blue))
+                    Text(text = gender, fontFamily = PlusJakartaSans, fontWeight = FontWeight.Medium, fontSize = 16.sp, color = colorResource(R.color.blue))
                     Spacer(modifier = Modifier.height(8.dp))
-                    Text(text = "Status Perkawinan", fontFamily = PlusJakartaSans, fontWeight = FontWeight.Bold, fontSize = 16.sp)
-                    Text(text = status, fontFamily = PlusJakartaSans, fontWeight = FontWeight.Medium, fontSize = 16.sp)
+                    Text(text = "Status Perkawinan", fontFamily = PlusJakartaSans, fontWeight = FontWeight.Bold, fontSize = 16.sp, color = colorResource(R.color.blue))
+                    Text(text = status, fontFamily = PlusJakartaSans, fontWeight = FontWeight.Medium, fontSize = 16.sp, color = colorResource(R.color.blue))
                     Spacer(modifier = Modifier.height(8.dp))
-                    Text(text = "Alamat", fontFamily = PlusJakartaSans, fontWeight = FontWeight.Bold, fontSize = 16.sp)
-                    Text(text = alamat, fontFamily = PlusJakartaSans, fontWeight = FontWeight.Medium, fontSize = 16.sp)
+                    Text(text = "Alamat", fontFamily = PlusJakartaSans, fontWeight = FontWeight.Bold, fontSize = 16.sp, color = colorResource(R.color.blue))
+                    Text(text = alamat, fontFamily = PlusJakartaSans, fontWeight = FontWeight.Medium, fontSize = 16.sp, color = colorResource(R.color.blue))
                 }
             },
             confirmButton = {
                 Button(onClick = {
                     showDialog = false
                     clearData()
-                }) {
-                    Text("Ok")
+                },
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(16.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = colorResource(R.color.blue),
+                        contentColor = colorResource(R.color.white)
+                    )) {
+                    Text("Ok", fontFamily = PlusJakartaSans, fontWeight = FontWeight.ExtraBold, fontSize = 14.sp)
+
                 }
             }
         )
@@ -327,11 +338,11 @@ fun Formulir(
                                 containerColor = colorResource(R.color.orange),
                                 contentColor = colorResource(R.color.white)
                             ),
-//                            enabled =
-//                                txtNama.isNotEmpty() &&
-//                            txtGender.isNotEmpty() &&
-//                            txtStatus.isNotEmpty() &&
-//                            txtAlamat.isNotEmpty(),
+                            enabled =
+                                txtNama.isNotEmpty() &&
+                            txtGender.isNotEmpty() &&
+                            txtStatus.isNotEmpty() &&
+                            txtAlamat.isNotEmpty(),
                             onClick = {
                                 nama = txtNama
                                 gender = txtGender
