@@ -280,7 +280,8 @@ fun Dashboard(
                 }
                 LazyColumn(
                     modifier = Modifier
-                        .fillMaxSize(),
+                        .fillMaxSize()
+                        .shimmerBackground(RoundedCornerShape(4.dp)),
                     contentPadding = PaddingValues(start = 16.dp, end = 16.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
