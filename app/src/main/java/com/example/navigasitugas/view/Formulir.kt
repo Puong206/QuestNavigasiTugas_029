@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -18,6 +19,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.ArrowDropUp
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.TaskAlt
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -90,18 +93,33 @@ fun Formulir(
     if (showDialog) {
         AlertDialog(
             onDismissRequest = { showDialog = false },
-            icon = {Icon(Icons.Default.Check, null)},
-            title = {Text(text = "Berhasil")},
+            icon = {Icon(Icons.Filled.TaskAlt,
+                null,
+                modifier = Modifier.size(64.dp))},
+            title = {
+                Column(modifier = Modifier.fillMaxWidth(),
+                    horizontalAlignment = Alignment.CenterHorizontally) {
+                    Text(text = "Berhasil", fontFamily = PlusJakartaSans, fontWeight = FontWeight.Bold, fontSize = 24.sp)
+                    Text(text = "Data berhasil disimpan", fontFamily = PlusJakartaSans, fontWeight = FontWeight.Normal, fontSize = 16.sp)
+                }
+            },
             text = {
-                Column {
-                    Text(text = "Nama: $nama")
-                    Text(text = "Jenis Kelamin: $gender")
-                    Text(text = "Status Perkawinan: $status")
-                    Text(text = "Alamat: $alamat")
+                Column(modifier = Modifier.fillMaxWidth()) {
+                    Text(text = "Nama", fontFamily = PlusJakartaSans, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                    Text(text = nama, fontFamily = PlusJakartaSans, fontWeight = FontWeight.Medium, fontSize = 16.sp)
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(text = "Jenis Kelamin", fontFamily = PlusJakartaSans, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                    Text(text = gender, fontFamily = PlusJakartaSans, fontWeight = FontWeight.Medium, fontSize = 16.sp)
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(text = "Status Perkawinan", fontFamily = PlusJakartaSans, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                    Text(text = status, fontFamily = PlusJakartaSans, fontWeight = FontWeight.Medium, fontSize = 16.sp)
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(text = "Alamat", fontFamily = PlusJakartaSans, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                    Text(text = alamat, fontFamily = PlusJakartaSans, fontWeight = FontWeight.Medium, fontSize = 16.sp)
                 }
             },
             confirmButton = {
-                TextButton(onClick = {
+                Button(onClick = {
                     showDialog = false
                     clearData()
                 }) {
@@ -309,11 +327,11 @@ fun Formulir(
                                 containerColor = colorResource(R.color.orange),
                                 contentColor = colorResource(R.color.white)
                             ),
-                            enabled =
-                                txtNama.isNotEmpty() &&
-                            txtGender.isNotEmpty() &&
-                            txtStatus.isNotEmpty() &&
-                            txtAlamat.isNotEmpty(),
+//                            enabled =
+//                                txtNama.isNotEmpty() &&
+//                            txtGender.isNotEmpty() &&
+//                            txtStatus.isNotEmpty() &&
+//                            txtAlamat.isNotEmpty(),
                             onClick = {
                                 nama = txtNama
                                 gender = txtGender
