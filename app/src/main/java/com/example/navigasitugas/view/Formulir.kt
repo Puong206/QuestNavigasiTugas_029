@@ -1,6 +1,7 @@
 package com.example.navigasitugas.view
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import com.example.navigasitugas.R
@@ -28,6 +29,8 @@ import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MenuDefaults
+import androidx.compose.material3.MenuItemColors
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.RadioButtonDefaults
@@ -312,11 +315,14 @@ fun Formulir(
                                 )
                                 ExposedDropdownMenu(
                                     expanded = expanded,
+                                    modifier = Modifier
+                                        .background(colorResource(R.color.blue)),
                                     onDismissRequest = { expanded = false }
                                 ) {
                                     nikah.forEach { opsi ->
                                         DropdownMenuItem(
                                             text = { Text(opsi) },
+                                            colors = MenuDefaults.itemColors(colorResource(R.color.white)),
                                             onClick = {
                                                 txtStatus = opsi
                                                 expanded = false
