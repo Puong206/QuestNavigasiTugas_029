@@ -316,12 +316,18 @@ fun Formulir(
                         OutlinedButton(
                             onClick = onBackButtonClick,
                             shape = RoundedCornerShape(16.dp),
-                            border = BorderStroke(2.dp, colorResource(R.color.orange)),
-                            colors = ButtonDefaults.outlinedButtonColors(
-                                containerColor = colorResource(R.color.white),
-                                contentColor = colorResource(R.color.orange)
-                            ),
-                            modifier = Modifier.width(120.dp)
+                            border = BorderStroke(2.dp, if (isLoading) Color.Transparent else colorResource(R.color.orange)),
+                            colors = (if (isLoading) ButtonDefaults.buttonColors(
+                                containerColor = Color.Transparent,
+                                contentColor = Color.Transparent
+                            )
+                            else ButtonDefaults.buttonColors(
+                                containerColor = colorResource(id = R.color.white),
+                                contentColor = colorResource(id = R.color.orange)
+                            )),
+                            modifier = Modifier
+                                .width(120.dp)
+                                .shimmerLoading(isLoading)
                         )
                         {
                             Text(
@@ -332,12 +338,18 @@ fun Formulir(
                             )
                         }
                         Button(
-                            modifier = Modifier.width(120.dp),
+                            modifier = Modifier
+                                .width(120.dp)
+                                .shimmerLoading(isLoading),
                             shape = RoundedCornerShape(16.dp),
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = colorResource(R.color.orange),
-                                contentColor = colorResource(R.color.white)
-                            ),
+                            colors = (if (isLoading) ButtonDefaults.buttonColors(
+                                containerColor = Color.Transparent,
+                                contentColor = Color.Transparent
+                            )
+                            else ButtonDefaults.buttonColors(
+                                containerColor = colorResource(id = R.color.orange),
+                                contentColor = colorResource(id = R.color.white)
+                            )),
                             enabled =
                                 txtNama.isNotEmpty() &&
                             txtGender.isNotEmpty() &&
@@ -355,7 +367,9 @@ fun Formulir(
                                 text = "Simpan",
                                 fontFamily = PlusJakartaSans,
                                 fontWeight = FontWeight.Bold,
-                                fontSize = 16.sp
+                                fontSize = 16.sp,
+                                modifier = Modifier.shimmerLoading(isLoading),
+                                color = if (isLoading) Color.Transparent else colorResource(R.color.white)
                             )
                         }
                     }
