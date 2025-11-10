@@ -231,15 +231,9 @@ fun Dashboard(
                     )
                     {
                         ElevatedButton(
-                            colors = (if (press) ButtonDefaults.buttonColors(
-                                containerColor = colorResource(id = R.color.white),
-                                contentColor = colorResource(id = R.color.orange)
-                            )
-                            else ButtonDefaults.buttonColors(
+                            colors = ButtonDefaults.buttonColors(
                                 containerColor = colorResource(id = R.color.orange),
-                                contentColor = colorResource(id = R.color.white)
-                            )
-                                    ),
+                                contentColor = colorResource(id = R.color.white)),
                             modifier = Modifier
                                 .width(160.dp),
                             onClick = onExitButtonClick,
@@ -252,15 +246,9 @@ fun Dashboard(
                             )
                         }
                         ElevatedButton(
-                            colors = (if (press) ButtonDefaults.buttonColors(
-                                containerColor = colorResource(id = R.color.white),
-                                contentColor = colorResource(id = R.color.orange)
-                            )
-                            else ButtonDefaults.buttonColors(
+                            colors = ButtonDefaults.buttonColors(
                                 containerColor = colorResource(id = R.color.orange),
-                                contentColor = colorResource(id = R.color.white)
-                            )
-                                    ),
+                                contentColor = colorResource(id = R.color.white)),
                             modifier = Modifier
                                 .width(160.dp),
                             onClick = onFormButtonClick
