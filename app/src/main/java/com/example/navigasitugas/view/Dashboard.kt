@@ -37,6 +37,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -61,8 +62,8 @@ fun GlassCard(
 ){
     val glassBrush = Brush.radialGradient(
         colors = listOf(
-            Color.White.copy(0.2f),
-            Color.White.copy(0.05f)
+            Color.White.copy(0.4f),
+            Color.White.copy(0.15f)
         )
     )
     val glassBorder = Brush.linearGradient(
@@ -94,6 +95,7 @@ fun GlassCard(
         )
     }
 }
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -140,13 +142,6 @@ fun Dashboard(
 
     Box(modifier = Modifier.fillMaxSize())
     {
-        Image(painter = logo,
-            contentScale = ContentScale.Fit,
-            contentDescription = null,
-            modifier = Modifier
-                .size(400.dp)
-                .align(Alignment.Center)
-        )
         Scaffold(
             containerColor = colorResource(R.color.blue),
             topBar = {
@@ -229,100 +224,118 @@ fun Dashboard(
                 }
             })
         { frame ->
-            LazyColumn(
-                modifier = Modifier
-                    .padding(frame)
-                    .fillMaxSize(),
-                contentPadding = PaddingValues(start = 16.dp, end = 16.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                items(items) { item ->
-                    GlassCard(
+            val blurRadius = 5.dp
+            Box(modifier = Modifier
+                .padding(frame)
+                .fillMaxSize()) {
+                Box(modifier = Modifier
+                    .height(400.dp)
+                    .width(400.dp)
+                    .blur(blurRadius)
+                    .align(Alignment.Center)) {
+                    Image(painter = logo,
+                        contentScale = ContentScale.Fit,
+                        contentDescription = null,
                         modifier = Modifier
-                            .padding(vertical = 8.dp)
+                            .size(200.dp)
+                            //.blur(blurRadius)
+                            .align(Alignment.Center)
                     )
-                    {
-                        Row(
+                }
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxSize(),
+                    contentPadding = PaddingValues(start = 16.dp, end = 16.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    items(items) { item ->
+                        GlassCard(
                             modifier = Modifier
-                                .padding(top = 8.dp, start = 8.dp, end = 8.dp)
-                                .fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceBetween
+                                .padding(vertical = 8.dp)
                         )
                         {
-                            Column {
-                                Text(
-                                    text = "NAMA LENGKAP",
-                                    fontSize = 16.sp,
-                                    fontFamily = PlusJakartaSans,
-                                    fontWeight = FontWeight.Bold,
-                                    color = colorResource(R.color.white)
-                                )
-                                Text(
-                                    item.nama,
-                                    fontSize = 16.sp,
-                                    fontFamily = PlusJakartaSans,
-                                    fontWeight = FontWeight.Normal,
-                                    color = colorResource(R.color.white)
-                                )
+                            Row(
+                                modifier = Modifier
+                                    .padding(top = 8.dp, start = 8.dp, end = 8.dp)
+                                    .fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween
+                            )
+                            {
+                                Column {
+                                    Text(
+                                        text = "NAMA LENGKAP",
+                                        fontSize = 16.sp,
+                                        fontFamily = PlusJakartaSans,
+                                        fontWeight = FontWeight.Bold,
+                                        color = colorResource(R.color.white)
+                                    )
+                                    Text(
+                                        item.nama,
+                                        fontSize = 16.sp,
+                                        fontFamily = PlusJakartaSans,
+                                        fontWeight = FontWeight.Normal,
+                                        color = colorResource(R.color.white)
+                                    )
+                                }
+                                Column {
+                                    Text(
+                                        text = "JENIS KELAMIN",
+                                        fontSize = 16.sp,
+                                        fontFamily = PlusJakartaSans,
+                                        fontWeight = FontWeight.Bold,
+                                        color = colorResource(R.color.white)
+                                    )
+                                    Text(
+                                        item.gender,
+                                        fontSize = 16.sp,
+                                        fontFamily = PlusJakartaSans,
+                                        fontWeight = FontWeight.Normal,
+                                        color = colorResource(R.color.white)
+                                    )
+                                }
                             }
-                            Column {
-                                Text(
-                                    text = "JENIS KELAMIN",
-                                    fontSize = 16.sp,
-                                    fontFamily = PlusJakartaSans,
-                                    fontWeight = FontWeight.Bold,
-                                    color = colorResource(R.color.white)
-                                )
-                                Text(
-                                    item.gender,
-                                    fontSize = 16.sp,
-                                    fontFamily = PlusJakartaSans,
-                                    fontWeight = FontWeight.Normal,
-                                    color = colorResource(R.color.white)
-                                )
-                            }
-                        }
-                        Spacer(modifier = Modifier.height(12.dp))
-                        Row(
-                            modifier = Modifier
-                                .padding(start = 8.dp, end = 8.dp, bottom = 8.dp)
-                                .fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceBetween
-                        )
-                        {
-                            Column {
-                                Text(
-                                    text = "STATUS PERKAWINAN",
-                                    fontSize = 16.sp,
-                                    fontFamily = PlusJakartaSans,
-                                    fontWeight = FontWeight.Bold,
-                                    color = colorResource(R.color.white),
-                                    modifier = Modifier.width(120.dp)
-                                )
-                                Text(
-                                    item.status,
-                                    fontSize = 16.sp,
-                                    fontFamily = PlusJakartaSans,
-                                    fontWeight = FontWeight.Normal,
-                                    color = colorResource(R.color.white)
-                                )
-                            }
-                            Column {
-                                Text(
-                                    text = "ALAMAT",
-                                    fontSize = 16.sp,
-                                    fontFamily = PlusJakartaSans,
-                                    fontWeight = FontWeight.Bold,
-                                    color = colorResource(R.color.white),
-                                    modifier = Modifier.width(120.dp)
-                                )
-                                Text(
-                                    item.alamat,
-                                    fontSize = 16.sp,
-                                    fontFamily = PlusJakartaSans,
-                                    fontWeight = FontWeight.Normal,
-                                    color = colorResource(R.color.white)
-                                )
+                            Spacer(modifier = Modifier.height(12.dp))
+                            Row(
+                                modifier = Modifier
+                                    .padding(start = 8.dp, end = 8.dp, bottom = 8.dp)
+                                    .fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween
+                            )
+                            {
+                                Column {
+                                    Text(
+                                        text = "STATUS PERKAWINAN",
+                                        fontSize = 16.sp,
+                                        fontFamily = PlusJakartaSans,
+                                        fontWeight = FontWeight.Bold,
+                                        color = colorResource(R.color.white),
+                                        modifier = Modifier.width(120.dp)
+                                    )
+                                    Text(
+                                        item.status,
+                                        fontSize = 16.sp,
+                                        fontFamily = PlusJakartaSans,
+                                        fontWeight = FontWeight.Normal,
+                                        color = colorResource(R.color.white)
+                                    )
+                                }
+                                Column {
+                                    Text(
+                                        text = "ALAMAT",
+                                        fontSize = 16.sp,
+                                        fontFamily = PlusJakartaSans,
+                                        fontWeight = FontWeight.Bold,
+                                        color = colorResource(R.color.white),
+                                        modifier = Modifier.width(120.dp)
+                                    )
+                                    Text(
+                                        item.alamat,
+                                        fontSize = 16.sp,
+                                        fontFamily = PlusJakartaSans,
+                                        fontWeight = FontWeight.Normal,
+                                        color = colorResource(R.color.white)
+                                    )
+                                }
                             }
                         }
                     }
