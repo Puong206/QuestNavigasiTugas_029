@@ -1,6 +1,7 @@
 package com.example.navigasitugas.view
 
 import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
@@ -114,7 +115,7 @@ fun Modifier.shimmerBackground(shape: Shape = RectangleShape): Modifier = compos
         initialValue = 0f,
         targetValue = 400f,
         animationSpec = infiniteRepeatable(
-            tween(durationMillis = 1500, easing = LinearEasing),
+            tween(durationMillis = 1500, easing = LinearOutSlowInEasing),
             RepeatMode.Restart
         ),
     )
